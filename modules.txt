@@ -1,0 +1,11 @@
+alacritty
+kitty
+ohmyposh
+dunst
+btop
+htop
+cvim
+nvim
+nvim-old
+hypr
+ashjgdahjgsda
