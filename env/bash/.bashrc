@@ -3,7 +3,11 @@
 #
 
 # custom bash
-eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/theme.json)"
+if [[ -e "~/.config/ohmyposh/*.json" ]] then
+    eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/theme.json)"
+else
+    echo "No config found -- oh-my-posh" 2>
+fi
 
 if [ -e .bash_aliases ] ; then
     source .bash_aliases

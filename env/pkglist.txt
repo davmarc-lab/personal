@@ -6,4 +6,5 @@ ripgrep
 firefox
 htop
 btop
+unzip
 

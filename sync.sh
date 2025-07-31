@@ -10,7 +10,7 @@ function err () {
 DST='config'
 
 # Loads the given configuration
-function load_config () {
+function sync_config () {
     # config directory name needed
     if [[ $# != 1 ]] then
         err "Missing config name -- cancel operation"
@@ -30,5 +30,5 @@ function load_config () {
 
 for fin in `cat modules.txt`
 do
-    load_config $fin
+    sync_config $fin
 done
