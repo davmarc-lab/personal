@@ -10,6 +10,10 @@ function err () {
     >&2 echo $@
 }
 
+if [[ ! -e $HOME/.config ]] then
+    mkdir $HOME/.config
+fi
+
 if [[ $# < 1 ]] then
     # only visual effect
     echo "-- listing all config modules"
