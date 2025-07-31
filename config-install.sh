@@ -11,6 +11,7 @@ function err () {
 }
 
 if [[ ! -e $HOME/.config ]] then
+    echo "Missing '.config' directory in '$USER' home -- creating dir"
     mkdir $HOME/.config
 fi
 
@@ -39,10 +40,11 @@ else
             if [[ $response =~ ^(y| ) ]] || [[ -z $response ]]; then
                 echo "Installing '$found' in $DST/$found"
                 rm -rf $DST/$found
+                echo "-- old config in '$DST/$found' removed --"
                 cp -r config/$found $DST/$found
+                echo "-- new config copied in '$DST/$found'"
             fi
         done
-
     done
 fi
 
