@@ -3,10 +3,10 @@
 #
 
 # custom bash
-if [[ -e "~/.config/ohmyposh/*.json" ]] then
+if [ -e $HOME/.config/ohmyposh/theme.json ] ; then
     eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/theme.json)"
 else
-    echo "No config found -- oh-my-posh" 2>
+     >&2 echo "No config found -- oh-my-posh"
 fi
 
 if [ -e .bash_aliases ] ; then

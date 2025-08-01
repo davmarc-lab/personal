@@ -1,10 +1,21 @@
 openssl
 git
+less
+man
+bash-completion
 nvim
+lua
+lua51
+luarocks
+unzip
+npm
+tree-sitter
+tree-sitter-cli
 fd
 ripgrep
 firefox
 htop
 btop
-unzip
+dolphin
+bitwarden
 
