@@ -17,9 +17,6 @@ alias cg2="cd ~/Documents/ComputerGraphics/CG-Project2/ &&
 
 alias leet="cd ~/Public/leet/"
 
-# for the meme
-alias poweroof=poweroff
-
 # starts docker service
 alias dkstart="sudo systemctl start docker"
 

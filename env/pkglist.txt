@@ -1,5 +1,8 @@
-openssl
 git
+base-devel
+openssl
+dunst
+cargo
 less
 man
 bash-completion
@@ -18,4 +21,5 @@ htop
 btop
 dolphin
 bitwarden
-
+go
+playerctl
