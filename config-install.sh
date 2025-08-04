@@ -9,14 +9,16 @@ ELEM_NOT_FOUND=3
 function err () {
     >&2 echo $@
 }
+DST=$HOME/.config
 
-if [[ ! -e $HOME/.config ]] then
+if [[ ! -e $DST ]] then
     echo "Missing '.config' directory in '$USER' home -- creating dir"
-    mkdir $HOME/.config
+    mkdir $DST
 fi
 
 if [[ $# < 1 ]] then
     # only visual effect
+    err "Not working, send a list of configs separated by ' ' -- not implemented"
     echo "-- listing all config modules"
     ls -A -d -1 config/*
     MODULES=`ls -A -d -1 config/*`
@@ -28,7 +30,6 @@ if [[ $# < 1 ]] then
         echo "You can call this script passing a module list that will be installed -- skipping"
     fi
 else
-    DST=$HOME/.config
     for mod in $@
     do
         elem=`ls -A -d -1 config/* | sed "s/.*\///" | grep -w $mod`
@@ -48,3 +49,19 @@ else
     done
 fi
 
+echo "Copying rc files"
+
+FILES=`find config -maxdepth 1 -type f -name "*rc"`
+for file in $FILES
+do
+    file="${file##*/}"
+    read -r -p "-- install '$file'? [Y/n] " response
+    if [[ $response =~ ^(y| ) ]] || [[ -z $response ]] then
+        cp config/$file $DST/$file
+        echo "-- copied $file --"
+    fi
+done
+
+echo ""
+echo "Finished copying configs"
+echo ""
