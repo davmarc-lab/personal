@@ -1,10 +1,11 @@
 alacritty
-kitty
-ohmyposh
-dunst
 btop
-htop
 cvim
+dunst
+htop
+hypr
+kitty
 nvim
 nvim-old
-hypr
+ohmyposh
+waybar

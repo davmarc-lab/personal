@@ -365,6 +365,10 @@
     # Icon for notifications with critical urgency
     default_icon = dialog-warning
 
+[waybar-module-pomodoro]
+    summary = "Pomodoro"
+    script = "~/.config/dunst/scripts/alarm.sh"
+
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
 #
