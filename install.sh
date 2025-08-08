@@ -10,7 +10,7 @@ function err () {
     >&2 echo $@
 }
 
-read -r -p "Do you want to update the system first? [Y/n]" response
+read -r -p "Do you want to update the system first? [Y/n] " response
 response=${response,,}
 if [[ $response =~ ^(y| ) ]] || [[ -z $response ]]; then
     echo 'Start system update ...'
@@ -58,7 +58,7 @@ git config --global user.email "$GIT_EMAIL"
 git config --global user.name "$GIT_NAME"
 
 echo 'AUR package manager'
-read -r -p "Do you want to install yay? [Y/n]" response
+read -r -p "Do you want to install yay? [Y/n] " response
 response=${response,,}
 if [[ $response =~ ^(y| ) ]] || [[ -z $response ]]; then
     if [[ ! -e $HOME/git-packages ]] then

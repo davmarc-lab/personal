@@ -12,44 +12,59 @@ function err () {
 DST=$HOME/.config
 
 if [[ ! -e $DST ]] then
-    echo "Missing '.config' directory in '$USER' home -- creating dir"
+    echo -e "Missing '.config' directory in '$USER' home -- creating dir\n"
     mkdir $DST
 fi
 
 if [[ $# < 1 ]] then
-    # only visual effect
-    err "Not working, send a list of configs separated by ' ' -- not implemented"
     echo "-- listing all config modules"
-    ls -A -d -1 config/*
     MODULES=`ls -A -d -1 config/*`
-    read -r -p "Do you want to install all config modules (total = $(ls -A -d -1 config/* | wc -l))? [Y/n]" response
+    for mod in $MODULES
+    do
+        echo -e "\t$mod"
+    done
+    echo ""
+    read -r -p "Do you want to install all config modules (total = $(ls -A -d -1 config/* | wc -l))? [Y/n] " response
     response=${response,,}
     if [[ $response =~ ^(y| ) ]] || [[ -z $response ]]; then
-        echo "Copying configs:"
+        echo -e "Copying configs:"
+        for mod in $MODULES
+        do
+            elem=`sed "s/.*\///" <<< $mod`
+            echo "Installing '$elem' in $DST/$elem"
+            rm -rf $DST/$elem
+            echo "-- old config in '$DST/$elem' removed --"
+            cp -r config/$elem $DST/$elem
+            echo -e "-- new config copied in '$DST/$elem'\n"
+        done
     else
-        echo "You can call this script passing a module list that will be installed -- skipping"
+        echo "-- config not imported -- user skip"
     fi
 else
     for mod in $@
     do
+        echo -e "Fetching '$mod' config"
         elem=`ls -A -d -1 config/* | sed "s/.*\///" | grep -w $mod`
-        # elem=`ls -A -d -1 config/* | sed "s/.*\///" | sed "s/-//" | grep -w $mod`
-        for found in $elem
-        do
-            read -r -p "-- install '$found'? [Y/n]" response
-            response=${response,,}
-            if [[ $response =~ ^(y| ) ]] || [[ -z $response ]]; then
-                echo "Installing '$found' in $DST/$found"
-                rm -rf $DST/$found
-                echo "-- old config in '$DST/$found' removed --"
-                cp -r config/$found $DST/$found
-                echo "-- new config copied in '$DST/$found'"
-            fi
-        done
+        if [[ $? > 0 ]] then
+            echo "-- module named '$mod' not found -- skipping"
+        else
+            for found in $elem
+            do
+                read -r -p "-- install '$found'? [Y/n] " response
+                response=${response,,}
+                if [[ $response =~ ^(y| ) ]] || [[ -z $response ]]; then
+                    echo -e "\nInstalling '$found' in $DST/$found"
+                    rm -rf $DST/$found
+                    echo "-- old config in '$DST/$found' removed --"
+                    cp -r config/$found $DST/$found
+                    echo -e "-- new config copied in '$DST/$found'\n"
+                fi
+            done
+        fi
     done
 fi
 
-echo "Copying rc files"
+echo -e "\nCopying rc files"
 
 FILES=`find config -maxdepth 1 -type f -name "*rc"`
 for file in $FILES
@@ -62,6 +77,4 @@ do
     fi
 done
 
-echo ""
-echo "Finished copying configs"
-echo ""
+echo -e "\nFinished copying configs\n"

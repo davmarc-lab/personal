@@ -19,8 +19,9 @@ ripgrep
 firefox
 htop
 btop
-dolphin
 bitwarden
+docker
+dolphin
 go
 playerctl
 kolourpaint
