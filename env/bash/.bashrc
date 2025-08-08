@@ -9,8 +9,8 @@ else
      >&2 echo "No config found -- oh-my-posh"
 fi
 
-if [ -e .bash_aliases ] ; then
-    source .bash_aliases
+if [ -e $HOME/.bash_aliases ] ; then
+    source $HOME/.bash_aliases
 fi
 
 shopt -s autocd
