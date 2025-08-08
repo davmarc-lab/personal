@@ -6,7 +6,7 @@ opacity = 0.9
 size = 12.0
 
 [font.normal]
-family = "DejaVuSansM Nerd Font Mono"
+family = "DejaVuSansM Nerd Font Propo"
 style = "Regular"
 
 [font.bold]
@@ -15,11 +15,11 @@ style = "Bold"
 
 [font.bold_italic]
 family = "DejaVuSansM Nerd Font Mono"
-style = "Bold Italic"
+style = "Bold Oblique"
 
 [font.italic]
 family = "DejaVuSansM Nerd Font Mono"
-style = "Italic"
+style = "Oblique"
 
 [general]
 import = [
