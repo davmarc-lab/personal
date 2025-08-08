@@ -28,7 +28,15 @@ function sync_config () {
 
 }
 
-for fin in `cat modules.txt`
-do
-    sync_config $fin
-done
+# sync only the given list
+if [[ $# -ge 1 ]] then
+    for mod in $@
+    do
+        sync_config $mod
+    done
+else # sync all modules in `modules.txt` 
+    for fin in `cat modules.txt`
+    do
+        sync_config $fin
+    done
+fi
