@@ -1,0 +1,62 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "blocks": [
+        {
+            "type": "prompt",
+            "alignment": "left",
+            "newline": false,
+            "overflow": "break",
+            "segments": [
+                {
+                    "foreground": "#e36464",
+                    "style": "plain",
+                    "template": "\u276f {{ .HostName }}@{{ .UserName }} ",
+                    "type": "session"
+                },
+                {
+                    "foreground": "#62ed8b",
+                    "style": "plain",
+                    "template": "\u279c ",
+                    "type": "text"
+                },
+                {
+                    "type": "path",
+                    "style": "powerline",
+                    "foreground": "#9c64fe",
+                    "properties": {
+                        "style": "agnoster_full",
+                        "home_icon": "~",
+                        "folder_icon": "\uf07b",
+                        "folder_separator_icon": " \u276f "
+                    },
+                    "template": "\ue5ff {{ .Path }} "
+                },
+                {
+                    "type": "git",
+                    "style": "powerline",
+                    "foreground": "#e36464",
+                    "properties": {
+                        "branch_icon": "\ue725 "
+                    },
+                    "template": "<#62ed8b>\u279c</> <#ddb15f>git(</>{{ .HEAD }}<#ddb15f>)</> "
+                },
+                {
+                    "type": "status",
+                    "style": "diamond",
+                    "foreground": "#00c7fc",
+                    "properties": {
+                        "always_enabled": true
+                    },
+                    "template": "<#62ed8b>\u279c</> "
+                }
+            ]
+        }
+    ],
+    "console_title_template": "{{ .Folder }}",
+    "transient_prompt": {
+        "background": "transparent",
+        "foreground": "#FEF5ED",
+        "template": "{{ .Shell }}"
+    },
+    "version": 3
+}

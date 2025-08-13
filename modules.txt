@@ -10,3 +10,4 @@ nvim-old
 ohmyposh
 waybar
 tmux
+vim

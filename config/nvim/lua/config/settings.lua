@@ -33,7 +33,7 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
--- don't highlight works after search
+-- don't highlight words after search
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
