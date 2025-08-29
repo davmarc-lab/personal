@@ -11,3 +11,4 @@ ohmyposh
 waybar
 tmux
 vim
+quickshell
