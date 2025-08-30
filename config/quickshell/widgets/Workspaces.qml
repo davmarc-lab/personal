@@ -6,7 +6,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import qs.modules
+import qs.common
 
 Scope {
     id: root
@@ -14,9 +14,17 @@ Scope {
     Variants {
         model: Quickshell.screens
 
-        FloatingWindow {
+        PanelWindow {
             required property var modelData
             screen: modelData
+
+            anchors {
+                top: true
+                left: true
+                right: true
+            }
+
+            implicitHeight: 30
 
             ListView {
                 anchors.fill: parent
@@ -34,10 +42,10 @@ Scope {
                             background: Rectangle {
                                 id: circle
                                 radius: 14
-                                color: Theme.bgColor
+                                color: Theme.colorPrimary
                             }
 
-                            palette.buttonText: hover.hovered ? Theme.fgColor : "black"
+                            palette.buttonText: hover.hovered ? Theme.colorSecondary : "black"
 
                             HoverHandler {
                                 id: hover
@@ -53,31 +61,3 @@ Scope {
         }
     }
 }
-
-// PanelWindow {
-//     required property var modelData
-//     screen: modelData
-//
-//     anchors {
-//         top: true
-//         left: true
-//         right: true
-//     }
-//     ListView {
-//         anchors.fill: parent
-//         model: Hyprland.workspaces
-//         spacing: 5
-//
-//         delegate: WrapperRectangle {
-//             id: wsDelegate
-//             required property HyprlandWorkspace modelData
-//             color: "red"
-//
-//             ColumnLayout {
-//                 Text {
-//                     text: wsDelegate.modelData.id
-//                 }
-//             }
-//         }
-//     }
-// }
