@@ -1,5 +1,7 @@
 import Quickshell
 
+import qs.widgets
+
 Scope {
     id: root
 

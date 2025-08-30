@@ -6,9 +6,21 @@ import Quickshell.Io
 Singleton {
     id: theme
 
+    FileView {
+        id: themeFile
+        path: Settings.configsPath + "colorscheme.json"
+
+        blockLoading: true
+        watchChanges: true
+
+        onFileChanged: reload()
+    }
+    readonly property var themeData: JSON.parse(themeFile.text())
+
     property string themeStyle: "dark"
 
     readonly property string colorPrimary: themeStyle == "dark" ? themeData.dark.mPrimary : themeData.light.mPrimary
+    readonly property string colorPrimaryHover: themeStyle == "dark" ? themeData.dark.mPrimaryHover : themeData.light.mPrimaryHover
     readonly property string colorOnPrimary: themeStyle == "dark" ? themeData.dark.mOnPrimary : themeData.light.mOnPrimary
 
     readonly property string colorSecondary: themeStyle == "dark" ? themeData.dark.mSecondary : themeData.light.mSecondary
@@ -25,15 +37,4 @@ Singleton {
 
     readonly property string colorOutline: themeStyle == "dark" ? themeData.dark.mOutline : themeData.light.mOutline
     readonly property string colorShadow: themeStyle == "dark" ? themeData.dark.mShadow : themeData.light.mShadow
-
-    FileView {
-        id: themeFile
-        path: Settings.configsPath + "colorscheme.json"
-
-        blockLoading: true
-        watchChanges: true
-
-        onFileChanged: reload()
-    }
-    readonly property var themeData: JSON.parse(themeFile.text())
 }
