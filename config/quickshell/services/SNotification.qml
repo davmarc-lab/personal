@@ -1,4 +1,5 @@
 pragma Singleton
+pragma ComponentBehavior: Bound
 
 import QtQuick
 
@@ -7,7 +8,7 @@ import Quickshell.Services.Notifications
 
 Singleton {
     id: root
-    property ListModel notifications: ListModel {}
+    property list<Notif> notifications: []
 
     property NotificationServer server: NotificationServer {
         id: notifServer
@@ -20,14 +21,35 @@ Singleton {
         persistenceSupported: false
 
         onNotification: function (notif) {
-            console.log(notif.summary);
-            root.addNotification(notif);
+            notif.tracked = true;
+            root.notifications.push(notifComp.createObject(root, {
+                notification: notif
+            }));
         }
     }
 
-    function addNotification(notif: Notification) {
-        notifications.insert(0, {
-            "summary": notif.body
-        });
+    function clearAll() {
+        root.notifications = [];
+        for (var notif of root.notifications) {
+            notif.clear();
+        }
+    }
+
+    component Notif: QtObject {
+        id: notif
+
+        required property Notification notification
+
+        readonly property string summary: notification.summary
+
+        function clear() {
+            notification.dismiss();
+        }
+    }
+
+    Component {
+        id: notifComp
+
+        Notif {}
     }
 }

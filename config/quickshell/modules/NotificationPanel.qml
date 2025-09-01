@@ -14,40 +14,66 @@ FloatingWindow {
     id: root
 
     // anchors {
-    //     bottom: true
-    //     left: true
+    //     top: true
+    //     right: true
     // }
 
-    CustomRButton {
-        id: clear
+    implicitWidth: 300
 
-        text: "Clear"
-        anchors {
-            top: parent.top
-            right: parent.right
+    ListView {
+        id: notifs
+        anchors.fill: parent
+        model: ScriptModel {
+            id: notifModel
+            values: [...SNotification.notifications]
         }
-    }
 
-    Repeater {
-        model: SNotification.notifications
+        spacing: 10
 
-        delegate: WrapperRectangle {
+        delegate: Item {
             id: notif
-            required property Notification modelData
 
-            ColumnLayout {
-                Text {
-                    id: aaa
-                    color: "black"
-                    text: "BC"
-                    Component.onCompleted: function () {
-                        console.log(notif.modelData.body);
-                        console.log("AAA");
-                    }
-                }
+            required property SNotification.Notif modelData
+
+            Text {
+                id: notifSum
+                text: notif.modelData.summary
             }
         }
     }
+    CustomRButton {
+        id: clear
+
+        anchors.left: parent.left
+
+        text: "Clear"
+
+        onClicked: () => {
+            // it works
+            SNotification.clearAll();
+        }
+    }
+
+    // Repeater {
+    //     model: SNotification.notifications
+    //
+    //     delegate: WrapperRectangle {
+    //         id: notif
+    //         required property Notification modelData
+    //
+    //         ColumnLayout {
+    //             Text {
+    //                 id: aaa
+    //                 color: "black"
+    //                 text: "BC"
+    //                 Component.onCompleted: function () {
+    //                     console.log(notif.modelData.summary);
+    //                     console.log("PRINT");
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     // ListView {
     //     anchors.fill: parent
