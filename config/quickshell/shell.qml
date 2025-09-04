@@ -1,15 +1,13 @@
 import Quickshell
-import Quickshell.Widgets
-import QtQuick.Controls
 
 import qs.modules
-import qs.widgets
-import qs.services
 
 ShellRoot {
-    // Workspaces {}
-    // WiFiPanel {}
+    id: root
 
-    SimpleBar {}
-    NotificationPanel {}
+    property bool enableBar: true
+    property bool enableNotification: true
+
+    LazyLoader { active: root.enableBar; component: SimpleBar {} }
+    LazyLoader { active: root.enableNotification; component: NotificationPanel {} }
 }

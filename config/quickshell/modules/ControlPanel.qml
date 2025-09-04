@@ -1,7 +1,3 @@
-import Quickshell
-import QtQuick
-import QtQuick.Controls
-
 import qs.widgets
 import qs.common
 

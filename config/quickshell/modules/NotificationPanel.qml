@@ -4,6 +4,7 @@ import QtQuick.Layouts
 
 import Quickshell.Services.Notifications
 import Quickshell.Widgets
+import Quickshell.Wayland
 import Quickshell
 
 import qs.widgets
@@ -14,12 +15,12 @@ PanelWindow {
     id: root
 
     anchors {
-        bottom: true
+        top: true
         right: true
     }
 
-    implicitWidth: 30
-    implicitHeight: 30
+    WlrLayershell.layer: WlrLayer.Overlay
+    exclusiveZone: 0
 
     ListView {
         id: notifs
@@ -38,6 +39,7 @@ PanelWindow {
 
             Text {
                 id: notifSum
+                color: "white"
                 text: notif.modelData.summary
             }
         }
