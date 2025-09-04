@@ -13,5 +13,5 @@ Singleton {
     readonly property var configsPath: Quickshell.env("HOME") + "/git-packages/personal/config/quickshell/configs/"
 
     property int panelMargin: 10
-    property int itemMargin: 4
+    property int itemMargin: 10
 }

@@ -10,15 +10,16 @@ import qs.widgets
 import qs.services
 import qs.common
 
-FloatingWindow {
+PanelWindow {
     id: root
 
-    // anchors {
-    //     top: true
-    //     right: true
-    // }
+    anchors {
+        bottom: true
+        right: true
+    }
 
-    implicitWidth: 300
+    implicitWidth: 30
+    implicitHeight: 30
 
     ListView {
         id: notifs
@@ -44,7 +45,7 @@ FloatingWindow {
     CustomRButton {
         id: clear
 
-        anchors.left: parent.left
+        anchors.right: parent.right
 
         text: "Clear"
 

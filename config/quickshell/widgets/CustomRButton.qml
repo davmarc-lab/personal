@@ -19,10 +19,6 @@ RoundButton {
     }
 
     palette.buttonText: this.hovered ? this.fgColorHovered : this.fgColor
-
-    background: Rectangle {
-        id: back
-        radius: parent.width / 2
-        color: btn.hovered ? btn.bgColorHovered : btn.bgColor
-    }
+    palette.button: bgColor
+    palette.window: Theme.colorOutline
 }

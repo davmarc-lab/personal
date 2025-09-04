@@ -36,11 +36,23 @@ Singleton {
     }
 
     component Notif: QtObject {
-        id: notif
+        id: wrapper
 
         required property Notification notification
 
-        readonly property string summary: notification.summary
+        property bool popup: false
+        property string appName: notification.appName ?? ""
+        property string appIcon: notification.appIcon ?? ""
+
+        property string image: notification.image
+        property string summary: notification.summary ?? ""
+        property string body: notification.body ?? ""
+        property string urgency: notification.urgency ?? ""
+
+        property bool tracked: notification.tracked ?? false
+
+        // notification actions
+        property list<var> actions: notification.actions ?? []
 
         function clear() {
             notification.dismiss();

@@ -4,9 +4,12 @@ import QtQuick.Controls
 
 import qs.modules
 import qs.widgets
+import qs.services
 
-Scope {
+ShellRoot {
     // Workspaces {}
     // WiFiPanel {}
+
+    SimpleBar {}
     NotificationPanel {}
 }

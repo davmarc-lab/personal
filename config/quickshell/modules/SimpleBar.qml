@@ -1,6 +1,14 @@
 import Quickshell
+import Quickshell.Hyprland
+import Quickshell.Widgets
+
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
 import qs.widgets
+import qs.common
+import qs.services
 
 Scope {
     id: root
@@ -8,7 +16,8 @@ Scope {
     Variants {
         model: Quickshell.screens
 
-        PanelWindow {
+        Pane {
+            id: mainBar
             required property var modelData
             screen: modelData
 
@@ -18,10 +27,57 @@ Scope {
                 right: true
             }
 
-            implicitHeight: 30
+            implicitHeight: 32
+
+            ListView {
+                id: dsk
+                anchors.fill: parent
+                model: Hyprland.workspaces
+                spacing: 5
+                orientation: Qt.Horizontal
+
+                delegate: WrapperRectangle {
+                    id: wsDelegate
+                    required property HyprlandWorkspace modelData
+                    color: Theme.colorSurface
+                    ColumnLayout {
+                        layoutDirection: Qt.RightToLeft
+                        CustomRButton {
+                            palette.buttonText: hover.hovered ? Theme.colorSecondary : "black"
+
+                            HoverHandler {
+                                id: hover
+                            }
+
+                            text: wsDelegate.modelData.id
+
+                            onClicked: wsDelegate.modelData.activate()
+                        }
+                    }
+                }
+            }
 
             ClockWidget {
-                anchors.centerIn: parent
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                    verticalCenter: parent.verticalCenter
+                }
+                color: "white"
+            }
+
+            Text {
+                anchors {
+                    right: ctl.left
+                    verticalCenter: parent.verticalCenter
+                    rightMargin: Settings.itemMargin
+                }
+                color: "white"
+                text: SAudio.getSourceDescription()
+            }
+
+            ControlPanel {
+                id: ctl
+                anchors.right: parent.right
             }
         }
     }
