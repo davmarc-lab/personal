@@ -2,8 +2,6 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import Quickshell.Services.Notifications
-import Quickshell.Widgets
 import Quickshell.Wayland
 import Quickshell
 
@@ -18,83 +16,67 @@ PanelWindow {
         top: true
         right: true
     }
+    margins {
+        right: Settings.notifItemBorder
+    }
 
     WlrLayershell.layer: WlrLayer.Overlay
     exclusiveZone: 0
 
-    ListView {
-        id: notifs
+    implicitWidth: Settings.notifPanelWidth
+    implicitHeight: Settings.notifPanelHeight
+    color: Theme.colorSurface
+
+    ColumnLayout {
         anchors.fill: parent
-        model: ScriptModel {
-            id: notifModel
-            values: [...SNotification.notifications]
+        anchors.rightMargin: Settings.notifItemBorder
+        anchors.leftMargin: Settings.notifItemBorder
+
+        CustomRButton {
+            id: clear
+
+            Layout.alignment: Qt.AlignRight
+
+            text: "Clear"
+
+            onClicked: () => {
+                // it works
+                SNotification.clearAll();
+            }
         }
 
-        spacing: 10
+        ListView {
+            id: notifs
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            model: ScriptModel {
+                id: notifModel
+                values: [...SNotification.notifications]
+            }
 
-        delegate: Item {
-            id: notif
+            spacing: Settings.notifItemBorder
 
-            required property SNotification.Notif modelData
+            delegate: Rectangle {
+                id: notif
+                required property SNotification.Notif modelData
 
-            Text {
-                id: notifSum
-                color: "white"
-                text: notif.modelData.summary
+                color: Theme.colorSurfaceVariant
+
+                implicitWidth: Settings.notifItemWidth - 2 * Settings.notifItemBorder
+                implicitHeight: Settings.notifItemHeight
+                Layout.alignment: Qt.AlignHCenter
+
+                CText {
+                    id: notifSum
+                    color: Theme.colorOnSurfaceVariant
+                    text: notif.modelData.summary
+                    // used to print font.pointSize
+                    // text: "<a href=\"http://qt-project.org\">Qt Project website</a>"
+                    // onLinkHovered: {
+                    //     console.log(notifSum.fontInfo.pointSize);
+                    // }
+                }
             }
         }
     }
-    CustomRButton {
-        id: clear
-
-        anchors.right: parent.right
-
-        text: "Clear"
-
-        onClicked: () => {
-            // it works
-            SNotification.clearAll();
-        }
-    }
-
-    // Repeater {
-    //     model: SNotification.notifications
-    //
-    //     delegate: WrapperRectangle {
-    //         id: notif
-    //         required property Notification modelData
-    //
-    //         ColumnLayout {
-    //             Text {
-    //                 id: aaa
-    //                 color: "black"
-    //                 text: "BC"
-    //                 Component.onCompleted: function () {
-    //                     console.log(notif.modelData.summary);
-    //                     console.log("PRINT");
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-
-    // ListView {
-    //     anchors.fill: parent
-    //     model: SNotification.notifications
-    //     spacing: 5
-    //     orientation: Qt.Vertical
-    //
-    //     delegate: WrapperRectangle {
-    //         id: notif
-    //         required property Notification modelData
-    //
-    //         ColumnLayout {
-    //             Text {
-    //                 id: aaa
-    //                 color: "black"
-    //                 text: "A"
-    //             }
-    //         }
-    //     }
-    // }
 }

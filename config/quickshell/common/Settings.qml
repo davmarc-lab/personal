@@ -14,4 +14,15 @@ Singleton {
 
     property int panelMargin: 10
     property int itemMargin: 10
+
+    // font
+    property int fontSize: 10
+
+    // notifications
+    property int notifPanelWidth: 300
+    property int notifPanelHeight: 600
+
+    property int notifItemWidth: 300
+    property int notifItemHeight: 80
+    property int notifItemBorder: 10
 }
