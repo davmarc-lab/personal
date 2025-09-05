@@ -33,7 +33,7 @@ Scope {
                 id: dsk
                 anchors.fill: parent
                 model: Hyprland.workspaces
-                spacing: 5
+                spacing: 2
                 orientation: Qt.Horizontal
 
                 delegate: WrapperRectangle {
@@ -42,7 +42,7 @@ Scope {
                     color: Theme.colorSurface
                     ColumnLayout {
                         layoutDirection: Qt.RightToLeft
-                        CustomRButton {
+                        CRButton {
                             palette.buttonText: hover.hovered ? Theme.colorSecondary : "black"
 
                             HoverHandler {
@@ -65,19 +65,28 @@ Scope {
                 color: "white"
             }
 
-            Text {
+            CText {
                 anchors {
                     right: ctl.left
                     verticalCenter: parent.verticalCenter
                     rightMargin: Settings.itemMargin
                 }
                 color: "white"
-                text: SAudio.getSourceDescription()
+                text: SAudio.getVolume()
             }
 
-            ControlPanel {
+            CRButton {
                 id: ctl
                 anchors.right: parent.right
+
+                ControlPanel {
+                    id: controlPanel
+                    visible: false
+                }
+
+                onClicked: {
+                    controlPanel.toggle();
+                }
             }
         }
     }

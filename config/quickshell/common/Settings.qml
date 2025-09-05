@@ -16,7 +16,15 @@ Singleton {
     property int itemMargin: 10
 
     // font
-    property int fontSize: 10
+    property int fontSize: 12
+
+    // control panel
+    property int controlPanelWidth: 400
+    property int controlPanelHeight: 400
+    property int controlPanelMargin: 3
+    property int controlPanelRadius: 10
+
+    property int controlPanelBttsHeight: 100
 
     // notifications
     property int notifPanelWidth: 300
@@ -25,4 +33,6 @@ Singleton {
     property int notifItemWidth: 300
     property int notifItemHeight: 80
     property int notifItemBorder: 10
+
+    property int notifSumFontSize: 10
 }

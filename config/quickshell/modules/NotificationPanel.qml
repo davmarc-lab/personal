@@ -1,27 +1,24 @@
 import QtQuick
-import QtQuick.Controls
 import QtQuick.Layouts
 
-import Quickshell.Wayland
 import Quickshell
 
 import qs.widgets
 import qs.services
 import qs.common
 
-PanelWindow {
+PopupPane {
     id: root
+    visible: false
 
     anchors {
         top: true
         right: true
     }
+
     margins {
         right: Settings.notifItemBorder
     }
-
-    WlrLayershell.layer: WlrLayer.Overlay
-    exclusiveZone: 0
 
     implicitWidth: Settings.notifPanelWidth
     implicitHeight: Settings.notifPanelHeight
@@ -32,7 +29,7 @@ PanelWindow {
         anchors.rightMargin: Settings.notifItemBorder
         anchors.leftMargin: Settings.notifItemBorder
 
-        CustomRButton {
+        CRButton {
             id: clear
 
             Layout.alignment: Qt.AlignRight
@@ -69,6 +66,7 @@ PanelWindow {
                 CText {
                     id: notifSum
                     color: Theme.colorOnSurfaceVariant
+                    font.pointSize: Settings.notifSumFontSize
                     text: notif.modelData.summary
                     // used to print font.pointSize
                     // text: "<a href=\"http://qt-project.org\">Qt Project website</a>"

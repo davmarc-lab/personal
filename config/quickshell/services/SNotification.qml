@@ -6,6 +6,8 @@ import QtQuick
 import Quickshell
 import Quickshell.Services.Notifications
 
+import qs.common
+
 Singleton {
     id: root
     property list<Notif> notifications: []
@@ -23,7 +25,8 @@ Singleton {
         onNotification: function (notif) {
             notif.tracked = true;
             root.notifications.push(notifComp.createObject(root, {
-                notification: notif
+                notification: notif,
+                popup: true
             }));
         }
     }
@@ -40,7 +43,8 @@ Singleton {
 
         required property Notification notification
 
-        property bool popup: false
+        required property bool popup
+
         property string appName: notification.appName ?? ""
         property string appIcon: notification.appIcon ?? ""
 

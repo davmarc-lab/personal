@@ -1,9 +1,21 @@
-import Quickshell
+import Quickshell.Wayland
 
-import qs.common
+Pane {
+    WlrLayershell.layer: WlrLayer.Overlay
 
-PopupWindow {
-    id: panel
+    exclusiveZone: 0
 
-    color: Theme.colorSurface
+    property bool _visible: false
+
+    function setVisible(flag: bool) {
+        _visible = flag;
+    }
+
+    function toggle() {
+        _visible = !_visible;
+    }
+
+    on_VisibleChanged: {
+        this.visible = this._visible;
+    }
 }
