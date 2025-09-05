@@ -81,7 +81,7 @@ Scope {
 
                 ControlPanel {
                     id: controlPanel
-                    visible: false
+                    visible: true
                 }
 
                 onClicked: {

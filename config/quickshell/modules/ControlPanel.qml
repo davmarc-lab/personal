@@ -1,16 +1,18 @@
-import Quickshell
-
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Controls
 
 import qs.widgets
 import qs.common
+import qs.services
 
 RPopupPane {
     id: controlSettings
 
     property string customIcon: "󰖩"
     property int gap: 2
+
+    _visible: this.visible
 
     anchors {
         top: true
@@ -32,8 +34,9 @@ RPopupPane {
         anchors.margins: Settings.controlPanelMargin
 
         ColumnLayout {
-            Layout.maximumHeight: 100
-            Layout.preferredHeight: 100
+            id: main
+            Layout.maximumHeight: 150
+            Layout.preferredHeight: 150
             Layout.alignment: Qt.AlignTop
 
             RowLayout {
@@ -55,6 +58,12 @@ RPopupPane {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     text: "Volume???"
+
+                    onClicked: {
+                        volumeBar.visible = !volumeBar.visible;
+                        main.Layout.maximumHeight += volumeBar.visible ? 50 : -50;
+                        main.Layout.preferredHeight += volumeBar.visible ? 50 : -50;
+                    }
                 }
 
                 CButton {
@@ -62,6 +71,34 @@ RPopupPane {
                     Layout.fillHeight: true
                     text: "Disturb"
                 }
+            }
+
+            RowLayout {
+                id: volumeBar
+                visible: true
+                Layout.preferredHeight: 50
+                // Layout.preferredHeight: 50 - 1.5 * Settings.controlPanelMargin
+
+                Slider {
+                    value: SAudio.getVolume() / 100
+
+                    onMoved: {
+                        SAudio.setVolume(this.value);
+                    }
+                }
+            }
+        }
+
+        ColumnLayout {
+            Layout.alignment: Qt.AlignTop
+            Layout.fillHeight: true
+
+            Rectangle {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                // Layout.preferredHeight: 30
+                // Layout.maximumHeight: 300
+                color: "red"
             }
         }
     }
