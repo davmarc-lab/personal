@@ -8,7 +8,6 @@ import QtQuick.Layouts
 
 import qs.widgets
 import qs.common
-import qs.services
 
 Scope {
     id: root
@@ -65,27 +64,27 @@ Scope {
                 color: "white"
             }
 
-            CText {
-                anchors {
-                    right: ctl.left
-                    verticalCenter: parent.verticalCenter
-                    rightMargin: Settings.itemMargin
-                }
-                color: "white"
-                text: SAudio.getVolume()
-            }
-
+            // controlPanel or Dock
             CRButton {
                 id: ctl
                 anchors.right: parent.right
 
-                ControlPanel {
-                    id: controlPanel
-                    visible: true
+                HoverHandler {
+                    onHoveredChanged: {
+                        Global.ctlPanelButtonHover = this.hovered;
+                    }
                 }
 
+                Loader {
+                    active: Global.ctlPanelOpen
+
+                    sourceComponent: ControlPanel {
+                        id: controlPanel
+                        visible: Global.ctlPanelOpen
+                    }
+                }
                 onClicked: {
-                    controlPanel.toggle();
+                    Global.ctlPanelOpen = !Global.ctlPanelOpen;
                 }
             }
         }

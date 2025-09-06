@@ -19,10 +19,11 @@ Singleton {
     }
 
     function getVolume(): int {
-        return Math.round(sink.audio.volume * 100)
+        return Pipewire.ready ? Math.round(sink.audio.volume * 100) : "";
     }
 
     function setVolume(val: real) {
-        sink.audio.volume = val;
+        if (Pipewire.ready)
+            sink.audio.volume = val;
     }
 }

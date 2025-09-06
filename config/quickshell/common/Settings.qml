@@ -15,6 +15,10 @@ Singleton {
     property int panelMargin: 10
     property int itemMargin: 10
 
+    // buttons
+    property int buttonOutlineSize: 1
+    property int buttonSoftRadius: 6
+
     // font
     property int fontSize: 12
 
@@ -25,6 +29,9 @@ Singleton {
     property int controlPanelRadius: 10
 
     property int controlPanelBttsHeight: 100
+
+    // in seconds
+    property int controlPanelOutTime: 3
 
     // notifications
     property int notifPanelWidth: 300

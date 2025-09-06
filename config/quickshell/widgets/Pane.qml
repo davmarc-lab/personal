@@ -1,5 +1,7 @@
 import Quickshell
 
+import QtQuick
+
 import qs.common
 
 PanelWindow {
@@ -15,4 +17,8 @@ PanelWindow {
     aboveWindows: true
 
     color: Theme.colorSurface
+
+    MouseArea {
+        anchors.fill: parent
+    }
 }

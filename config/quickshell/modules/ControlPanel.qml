@@ -1,3 +1,5 @@
+import Quickshell
+
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
@@ -12,8 +14,6 @@ RPopupPane {
     property string customIcon: "󰖩"
     property int gap: 2
 
-    _visible: this.visible
-
     anchors {
         top: true
         right: true
@@ -26,10 +26,28 @@ RPopupPane {
     implicitWidth: Settings.controlPanelWidth
     implicitHeight: Settings.controlPanelHeight
 
+    HoverHandler {
+        id: hover
+
+        // Used to close panel when cursor goes outside
+        // onHoveredChanged: {
+        //     Global.ctlPanelOpen = hovered;
+        // }
+    }
+
+    Timer {
+        interval: Settings.controlPanelOutTime * 1000
+        running: !hover.hovered
+        repeat: true
+        onTriggered: {
+            Global.ctlPanelOpen = hover.hovered || Global.ctlPanelButtonHover;
+        }
+    }
+
     // not visible without margins
     outlineColor: Theme.colorError
 
-    ColumnLayout {
+    RowLayout {
         anchors.fill: parent
         anchors.margins: Settings.controlPanelMargin
 
@@ -55,15 +73,39 @@ RPopupPane {
 
             RowLayout {
                 CButton {
+                    id: volume
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    text: "Volume???"
 
-                    onClicked: {
-                        volumeBar.visible = !volumeBar.visible;
-                        main.Layout.maximumHeight += volumeBar.visible ? 50 : -50;
-                        main.Layout.preferredHeight += volumeBar.visible ? 50 : -50;
+                    colorClicked: bgColorHovered
+
+                    RowLayout {
+                        id: volumeBar
+                        anchors.fill: parent
+                        anchors.margins: Settings.controlPanelMargin
+
+                        visible: volume.hovered
+
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignVCenter
+
+                        Text {
+                            text: SAudio.getVolume()
+                        }
+
+                        CSlider {
+                            Layout.fillWidth: true
+
+                            value: SAudio.getVolume() / 100
+
+                            onMoved: {
+                                SAudio.setVolume(this.value);
+                            }
+                        }
                     }
+
+                    text: volumeBar.visible ? undefined : "Volume"
                 }
 
                 CButton {
@@ -73,32 +115,14 @@ RPopupPane {
                 }
             }
 
-            RowLayout {
-                id: volumeBar
-                visible: true
-                Layout.preferredHeight: 50
-                // Layout.preferredHeight: 50 - 1.5 * Settings.controlPanelMargin
+            ColumnLayout {
+                Layout.alignment: Qt.AlignTop
 
-                Slider {
-                    value: SAudio.getVolume() / 100
-
-                    onMoved: {
-                        SAudio.setVolume(this.value);
-                    }
+                Rectangle {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    color: "red"
                 }
-            }
-        }
-
-        ColumnLayout {
-            Layout.alignment: Qt.AlignTop
-            Layout.fillHeight: true
-
-            Rectangle {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                // Layout.preferredHeight: 30
-                // Layout.maximumHeight: 300
-                color: "red"
             }
         }
     }
