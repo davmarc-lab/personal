@@ -20,7 +20,7 @@ RPopupPane {
     }
 
     margins {
-        top: -Settings.panelMargin + this.gap
+        top: Settings.topBarMargin
     }
 
     implicitWidth: Settings.controlPanelWidth
@@ -44,8 +44,7 @@ RPopupPane {
         }
     }
 
-    // not visible without margins
-    outlineColor: Theme.colorError
+    baseColor: Theme.colorSurface
 
     RowLayout {
         anchors.fill: parent
@@ -53,8 +52,6 @@ RPopupPane {
 
         ColumnLayout {
             id: main
-            Layout.maximumHeight: 150
-            Layout.preferredHeight: 150
             Layout.alignment: Qt.AlignTop
 
             RowLayout {
@@ -112,16 +109,6 @@ RPopupPane {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     text: "Disturb"
-                }
-            }
-
-            ColumnLayout {
-                Layout.alignment: Qt.AlignTop
-
-                Rectangle {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    color: "red"
                 }
             }
         }

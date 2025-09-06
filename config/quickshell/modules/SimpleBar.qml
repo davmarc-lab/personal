@@ -7,6 +7,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 import qs.widgets
+import qs.modules.dock
 import qs.common
 
 Scope {
@@ -24,6 +25,13 @@ Scope {
                 top: true
                 left: true
                 right: true
+            }
+
+            margins {
+                top: Settings.topBarMargin
+                left: Settings.topBarMargin
+                right: Settings.topBarMargin
+                bottom: 0
             }
 
             implicitHeight: 32
@@ -64,29 +72,11 @@ Scope {
                 color: "white"
             }
 
-            // controlPanel or Dock
-            CRButton {
-                id: ctl
+            ControlPanel {
                 anchors.right: parent.right
-
-                HoverHandler {
-                    onHoveredChanged: {
-                        Global.ctlPanelButtonHover = this.hovered;
-                    }
-                }
-
-                Loader {
-                    active: Global.ctlPanelOpen
-
-                    sourceComponent: ControlPanel {
-                        id: controlPanel
-                        visible: Global.ctlPanelOpen
-                    }
-                }
-                onClicked: {
-                    Global.ctlPanelOpen = !Global.ctlPanelOpen;
-                }
             }
+
+            // controlPanel or Dock
         }
     }
 }

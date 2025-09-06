@@ -7,11 +7,11 @@ PopupPane {
     color: "transparent"
 
     property int radius: Settings.controlPanelRadius
-    property string outlineColor: Theme.colorSurface
+    property string baseColor: Theme.colorSurface
 
     Rectangle {
         anchors.fill: parent
         radius: root.radius
-        color: root.outlineColor
+        color: root.baseColor
     }
 }

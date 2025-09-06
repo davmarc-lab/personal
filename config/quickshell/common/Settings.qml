@@ -22,16 +22,19 @@ Singleton {
     // font
     property int fontSize: 12
 
+    // bar
+    property int topBarMargin: panelMargin
+
     // control panel
     property int controlPanelWidth: 400
-    property int controlPanelHeight: 400
-    property int controlPanelMargin: 3
+    property int controlPanelHeight: 100
+    property int controlPanelMargin: 5
     property int controlPanelRadius: 10
 
     property int controlPanelBttsHeight: 100
 
     // in seconds
-    property int controlPanelOutTime: 3
+    property int controlPanelOutTime: 1
 
     // notifications
     property int notifPanelWidth: 300
