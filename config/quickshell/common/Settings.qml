@@ -14,6 +14,7 @@ Singleton {
 
     property int panelMargin: 10
     property int itemMargin: 10
+    property int itemRadius: 10
 
     // buttons
     property int buttonOutlineSize: 1

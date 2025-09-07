@@ -11,6 +11,9 @@ import qs.common
 Pane {
     id: root
 
+    readonly property var items: SystemTray.items
+    readonly property var filteredItems: items.values.filter(i => i.status != 0)
+
     anchors {
         bottom: true
         right: true
@@ -24,18 +27,18 @@ Pane {
         top: 0
     }
 
-    color: "white"
-
     RowLayout {
         Layout.fillWidth: true
         Layout.fillHeight: true
 
         Repeater {
-            model: SystemTray.items
+            model: root.filteredItems
 
             delegate: CSysTrayItem {
                 required property SystemTrayItem modelData
                 item: modelData
+                Layout.fillWidth: true
+                Layout.fillHeight: true
             }
         }
     }

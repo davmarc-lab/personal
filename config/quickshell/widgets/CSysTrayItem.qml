@@ -3,7 +3,6 @@ import Quickshell.Widgets
 import Quickshell.Services.SystemTray
 
 import QtQuick
-import QtQuick.Layouts
 
 import qs.common
 
@@ -39,15 +38,4 @@ MouseArea {
         source: root.item.icon
         implicitSize: 24
     }
-
-    // QsMenuAnchor {
-    //     id: menu
-    //
-    //     menu: root.item.menu
-    //     anchor.window: root.bar
-    //     anchor.rect.x: root.x
-    //     anchor.rect.width: root.implicitWidth
-    //     anchor.rect.height: root.implicitHeight
-    //     anchor.edges: Edges.Top
-    // }
 }
