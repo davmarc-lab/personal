@@ -23,5 +23,5 @@ ShellRoot {
 
     LazyLoader { active: root.enableSettings; component: SettingsWindow{}}
 
-    LazyLoader { active: root.enableFoo; component: Foo {}}
+    // LazyLoader { active: root.enableFoo; component: Foo {}}
 }
