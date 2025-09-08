@@ -39,7 +39,7 @@ Scope {
             ListView {
                 id: dsk
                 anchors.fill: parent
-                model: Hyprland.workspaces
+                model: Hyprland.workspaces.values.filter(elem => elem.id >= 0)
                 spacing: 2
                 orientation: Qt.Horizontal
 

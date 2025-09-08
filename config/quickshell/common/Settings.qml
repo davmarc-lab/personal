@@ -22,6 +22,8 @@ Singleton {
 
     // font
     property int fontSize: 12
+    property int fontTitle: 18
+    property int fontSubTitle: 16
 
     // bar
     property int topBarMargin: panelMargin

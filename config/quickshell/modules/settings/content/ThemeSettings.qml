@@ -34,6 +34,20 @@ ColumnLayout {
 
                 Rectangle {
                     Layout.fillWidth: true
+                    Layout.preferredHeight: foo.height
+                    Layout.alignment: Qt.AlignTop
+
+                    Layout.topMargin: Settings.panelMargin
+                    color: "transparent"
+                    CTitle {
+                        id: foo
+                        text: "Theme Style"
+                    }
+                }
+
+                Rectangle {
+                    color: "transparent"
+                    Layout.fillWidth: true
                     Layout.preferredHeight: 30
                     Layout.alignment: Qt.AlignTop
 
@@ -48,23 +62,6 @@ ColumnLayout {
                         onCheckedChanged: {
                             Theme.themeStyle = this.checked ? "dark" : "light";
                         }
-                    }
-                    color: "transparent"
-                }
-
-                Repeater {
-                    model: 30
-                    delegate: Rectangle {
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: 30
-
-                        Layout.topMargin: Settings.panelMargin
-
-                        CSwitch {
-                            content: "Dio è un porco??"
-                            checked: true
-                        }
-                        color: "transparent"
                     }
                 }
             }
