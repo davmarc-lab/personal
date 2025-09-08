@@ -1,6 +1,7 @@
+pragma ComponentBehavior: Bound
+
 import Quickshell
 import Quickshell.Hyprland
-import Quickshell.Widgets
 
 import QtQuick
 import QtQuick.Controls
@@ -34,46 +35,84 @@ Scope {
                 bottom: 0
             }
 
-            implicitHeight: 32
+            implicitHeight: 38
 
-            ListView {
-                id: dsk
+            RowLayout {
+                id: barZones
                 anchors.fill: parent
-                model: Hyprland.workspaces.values.filter(elem => elem.id >= 0)
-                spacing: 2
-                orientation: Qt.Horizontal
+                Layout.maximumWidth: mainBar.width
 
-                delegate: WrapperRectangle {
-                    id: wsDelegate
-                    required property HyprlandWorkspace modelData
-                    color: Theme.colorSurface
-                    ColumnLayout {
-                        layoutDirection: Qt.RightToLeft
-                        CRButton {
-                            palette.buttonText: hover.hovered ? Theme.colorSecondary : "black"
+                BarFiller {
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
 
-                            HoverHandler {
-                                id: hover
+                    RowLayout {
+                        id: left
+                        anchors.fill: parent
+                        Repeater {
+                            id: dsk
+                            model: Hyprland.workspaces.values.filter(elem => elem.id >= 0)
+
+                            delegate: CRButton {
+                                id: wsDelegate
+                                Layout.alignment: Qt.AlignVCenter
+
+                                required property HyprlandWorkspace modelData
+
+                                palette.buttonText: hover.hovered ? Theme.colorSecondary : Theme.colorOnPrimary
+
+                                HoverHandler {
+                                    id: hover
+                                }
+
+                                text: wsDelegate.modelData.id
+
+                                onClicked: {
+                                    wsDelegate.modelData.activate();
+                                }
                             }
+                        }
 
-                            text: wsDelegate.modelData.id
+                        BarFiller {}
+                    }
+                }
 
-                            onClicked: wsDelegate.modelData.activate()
+                BarFiller {
+                    Layout.alignment: Qt.AlignHCenter
+
+                    RowLayout {
+                        id: center
+                        anchors.fill: parent
+
+                        BarFiller {}
+
+                        ClockWidget {
+                            Layout.alignment: Qt.AlignHCenter
+                        }
+
+                        BarFiller {}
+                    }
+                }
+
+                BarFiller {
+                    Layout.alignment: Qt.AlignRight
+
+                    RowLayout {
+                        id: right
+                        anchors.fill: parent
+
+                        BarFiller {}
+
+                        SystemTray {
+                            id: sysTray
+                            Layout.alignment: Qt.AlignRight
+                        }
+
+                        ControlPanel {
+                            id: control
+                            Layout.alignment: Qt.AlignRight
                         }
                     }
                 }
-            }
-
-            ClockWidget {
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                    verticalCenter: parent.verticalCenter
-                }
-                color: "white"
-            }
-
-            ControlPanel {
-                anchors.right: parent.right
             }
 
             // controlPanel or Dock
