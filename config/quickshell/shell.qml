@@ -10,9 +10,9 @@ import qs.modules.settings
 ShellRoot {
     id: root
 
-    property bool enableBar: true
+    property bool enableBar: false
     property bool enableNotification: true
-    property bool enableSysTray: true
+    property bool enableSysTray: false
 
     property bool enableSettings: true
     property bool enableFoo: false

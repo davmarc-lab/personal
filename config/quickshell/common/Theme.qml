@@ -1,10 +1,12 @@
 pragma Singleton
 
+import QtQuick
+
 import Quickshell
 import Quickshell.Io
 
 Singleton {
-    id: theme
+    id: root
 
     FileView {
         id: themeFile
@@ -19,22 +21,50 @@ Singleton {
 
     property string themeStyle: "dark"
 
-    readonly property string colorPrimary: themeStyle == "dark" ? themeData.dark.mPrimary : themeData.light.mPrimary
-    readonly property string colorPrimaryHover: themeStyle == "dark" ? themeData.dark.mPrimaryHover : themeData.light.mPrimaryHover
-    readonly property string colorOnPrimary: themeStyle == "dark" ? themeData.dark.mOnPrimary : themeData.light.mOnPrimary
+    // These properties are used to draw elements
+    property string colorPrimary: themeStyle == "dark" ? darkPrimary : lightPrimary
+    property string colorPrimaryHover: themeStyle == "dark" ? darkPrimaryHover : lightPrimaryHover
+    property string colorOnPrimary: themeStyle == "dark" ? darkOnPrimary : lightOnPrimary
+    property string colorSecondary: themeStyle == "dark" ? darkSecondary : lightSecondary
+    property string colorSecondaryHover: themeStyle == "dark" ? darkSecondaryHover : lightSecondaryHover
+    property string colorOnSecondary: themeStyle == "dark" ? darkOnSecondary : lightOnSecondary
+    property string colorError: themeStyle == "dark" ? darkError : lightError
+    property string colorOnError: themeStyle == "dark" ? darkOnError : lightOnError
+    property string colorSurface: themeStyle == "dark" ? darkSurface : lightSurface
+    property string colorOnSurface: themeStyle == "dark" ? darkOnSurface : lightOnSurface
+    property string colorSurfaceVariant: themeStyle == "dark" ? darkSurfaceVariant : lightSurfaceVariant
+    property string colorOnSurfaceVariant: themeStyle == "dark" ? darkOnSurfaceVariant : lightOnSurfaceVariant
+    property string colorOutline: themeStyle == "dark" ? darkOutline : lightOutline
+    property string colorShadow: themeStyle == "dark" ? darkShadow : lightShadow
 
-    readonly property string colorSecondary: themeStyle == "dark" ? themeData.dark.mSecondary : themeData.light.mSecondary
-    readonly property string colorOnSecondary: themeStyle == "dark" ? themeData.dark.mOnSecondary : themeData.light.mOnSecondary
+    // These properties are used to edit purpose
+    property string darkPrimary: root.themeData.dark.mPrimary
+    property string darkPrimaryHover: root.themeData.dark.mPrimaryHover
+    property string darkOnPrimary: root.themeData.dark.mOnPrimary
+    property string darkSecondary: root.themeData.dark.mSecondary
+    property string darkSecondaryHover: root.themeData.dark.mSecondaryHover
+    property string darkOnSecondary: root.themeData.dark.mOnSecondary
+    property string darkError: root.themeData.dark.mError
+    property string darkOnError: root.themeData.dark.mOnError
+    property string darkSurface: root.themeData.dark.mSurface
+    property string darkOnSurface: root.themeData.dark.mOnSurface
+    property string darkSurfaceVariant: root.themeData.dark.mSurfaceVariant
+    property string darkOnSurfaceVariant: root.themeData.dark.mOnSurfaceVariant
+    property string darkOutline: root.themeData.dark.mOutline
+    property string darkShadow: root.themeData.dark.mShadow
 
-    readonly property string colorError: themeStyle == "dark" ? themeData.dark.mError : themeData.light.mError
-    readonly property string colorOnError: themeStyle == "dark" ? themeData.dark.mOnError : themeData.light.mOnError
-
-    readonly property string colorSurface: themeStyle == "dark" ? themeData.dark.mSurface : themeData.light.mSurface
-    readonly property string colorOnSurface: themeStyle == "dark" ? themeData.dark.mOnSurface : themeData.light.mOnSurface
-
-    readonly property string colorSurfaceVariant: themeStyle == "dark" ? themeData.dark.mSurfaceVariant : themeData.light.mSurfaceVariant
-    readonly property string colorOnSurfaceVariant: themeStyle == "dark" ? themeData.dark.mOnSurfaceVariant : themeData.light.mOnSurfaceVariant
-
-    readonly property string colorOutline: themeStyle == "dark" ? themeData.dark.mOutline : themeData.light.mOutline
-    readonly property string colorShadow: themeStyle == "dark" ? themeData.dark.mShadow : themeData.light.mShadow
+    property string lightPrimary: root.themeData.light.mPrimary
+    property string lightPrimaryHover: root.themeData.light.mPrimaryHover
+    property string lightOnPrimary: root.themeData.light.mOnPrimary
+    property string lightSecondary: root.themeData.light.mSecondary
+    property string lightSecondaryHover: root.themeData.light.mSecondaryHover
+    property string lightOnSecondary: root.themeData.light.mOnSecondary
+    property string lightError: root.themeData.light.mError
+    property string lightOnError: root.themeData.light.mOnError
+    property string lightSurface: root.themeData.light.mSurface
+    property string lightOnSurface: root.themeData.light.mOnSurface
+    property string lightSurfaceVariant: root.themeData.light.mSurfaceVariant
+    property string lightOnSurfaceVariant: root.themeData.light.mOnSurfaceVariant
+    property string lightOutline: root.themeData.light.mOutline
+    property string lightShadow: root.themeData.light.mShadow
 }

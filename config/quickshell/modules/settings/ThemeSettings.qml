@@ -1,6 +1,5 @@
 pragma ComponentBehavior: Bound
 
-import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
@@ -32,18 +31,18 @@ ContentItem {
 
             customWidth: itemWidth
 
-
             ContentItem {
                 sizex: content.itemWidth
                 sizey: content.itemHeight
 
                 CSwitch {
+                    id: themeSwitch
                     anchors.fill: parent
 
                     content: "Dark Mode"
-                    checked: status
+                    checked: isDark
 
-                    property bool status: Theme.themeStyle == "dark"
+                    property bool isDark: Theme.themeStyle == "dark"
 
                     onCheckedChanged: {
                         Theme.themeStyle = this.checked ? "dark" : "light";
@@ -51,21 +50,14 @@ ContentItem {
                 }
             }
 
-            ContentSubSection {
-                title: "Sub Section"
-                Layout.alignment: Qt.AlignHCenter
-                Layout.preferredWidth: content.itemWidth
+            LightThemeEdit {
+                from: content
+                visible: !themeSwitch.isDark
+            }
 
-                Repeater {
-                    model: 8
-
-                    Rectangle {
-                        Layout.alignment: Qt.AlignHCenter
-                        Layout.preferredWidth: content.itemWidth
-                        Layout.preferredHeight: 30
-                        color: "white"
-                    }
-                }
+            DarkThemeEdit {
+                from: content
+                visible: themeSwitch.isDark
             }
 
             // // FILLER
