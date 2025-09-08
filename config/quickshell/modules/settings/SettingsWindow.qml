@@ -2,7 +2,6 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls
 
 import qs.widgets
 import qs.common
@@ -14,11 +13,11 @@ FloatingPane {
     property var sections: [
         {
             text: "Theme",
-            content: "content/ThemeSettings.qml"
+            content: "ThemeSettings.qml"
         },
         {
             text: "World",
-            content: "content/World.qml"
+            content: "World.qml"
         }
     ]
     property int currentSection: 0
@@ -107,7 +106,7 @@ FloatingPane {
 
                     Loader {
                         id: contentLoader
-                        anchors.fill: parent
+                        anchors.fill: contentPanel
 
                         active: true
                         Component.onCompleted: {

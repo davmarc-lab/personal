@@ -1,5 +1,3 @@
-import QtQuick
-
 import qs.common
 
 CText {

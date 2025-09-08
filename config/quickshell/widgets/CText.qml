@@ -6,4 +6,5 @@ Text {
     id: text
     font.pointSize: Settings.fontSize
     color: Theme.colorOnSurface
+    visible: text != ""
 }

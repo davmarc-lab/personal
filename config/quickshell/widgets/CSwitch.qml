@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls
 
 import qs.common
 
@@ -16,9 +15,7 @@ RowLayout {
         this.checked = !this.checked;
     }
 
-    anchors.fill: parent
-
-    Text {
+    CText {
         Layout.alignment: Qt.AlignLeft
         text: root.content
         color: Theme.colorOnSurface
