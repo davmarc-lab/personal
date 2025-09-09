@@ -2,26 +2,49 @@
 
 import Quickshell
 
+import qs.common
 import qs.modules
 import qs.modules.settings
+import qs.modules.dock
+import qs.modules.wallpaper
 
 // (=^.^=)
 
 ShellRoot {
     id: root
 
-    property bool enableBar: true
-    property bool enableNotification: true
-    property bool enableSysTray: true
+    LazyLoader {
+        active: Global.enableBar
+        component: SimpleBar {}
+    }
+    LazyLoader {
+        active: Global.enableNotification
+        component: NotificationPanel {}
+    }
+    LazyLoader {
+        active: Global.enableSysTray
+        component: SystemTray {}
+    }
 
-    property bool enableSettings: false
-    property bool enableFoo: false
+    LazyLoader {
+        active: Global.enableSettings
+        component: SettingsWindow {}
+    }
 
-    LazyLoader { active: root.enableBar; component: SimpleBar {} }
-    LazyLoader { active: root.enableNotification; component: NotificationPanel {} }
-    LazyLoader { active: root.enableSysTray; component: SystemTray {} }
+    LazyLoader {
+        active: Global.enableDock
+        component: Dock {}
+    }
 
-    LazyLoader { active: root.enableSettings; component: SettingsWindow{}}
+    LazyLoader {
+        active: Global.enableWallpaper
+        component: WallpaperPicker {}
+    }
 
-    // LazyLoader { active: root.enableFoo; component: Foo {}}
+    LazyLoader {
+        active: Global.enableWallpaper
+        component: Wallpaper {}
+    }
+
+    LazyLoader { active: Global.enableFoo; component: Foo {}}
 }

@@ -86,7 +86,13 @@ Scope {
                         BarFiller {}
 
                         ClockWidget {
-                            Layout.alignment: Qt.AlignHCenter
+                            MouseArea {
+                                anchors.fill: parent
+
+                                onClicked: {
+                                    Global.enableDock = !Global.enableDock;
+                                }
+                            }
                         }
 
                         BarFiller {}
@@ -104,7 +110,7 @@ Scope {
 
                         SystemTray {
                             id: sysTray
-                            Layout.alignment: Qt.AlignRight
+                            // Layout.alignment: Qt.AlignRight
                         }
 
                         ControlPanel {

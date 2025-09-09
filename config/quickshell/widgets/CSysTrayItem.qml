@@ -15,6 +15,8 @@ MouseArea {
     implicitWidth: 24
     implicitHeight: 24
 
+    x: parent.x
+
     hoverEnabled: true
     enabled: true
     visible: true
@@ -27,8 +29,8 @@ MouseArea {
         } else if (event.button == Qt.RightButton) {
             if (item.hasMenu) {
                 // Until QsMenuAnchor is not ok use this
-                // menu.open();
-                item.display(bar, root.x, root.y - Settings.panelMargin);
+                menu.open();
+                // item.display(bar, root.x, root.y);
             }
         }
         event.accepted = true;
@@ -37,5 +39,17 @@ MouseArea {
     IconImage {
         source: root.item.icon
         implicitSize: 24
+    }
+
+    QsMenuAnchor {
+        id: menu
+        anchor.window: root.bar
+
+        menu: root.item.menu
+        anchor.rect.x: root.x
+        anchor.rect.y: root.y + root.bar.height
+        anchor.rect.height: root.height
+        anchor.rect.width: root.width
+        anchor.edges: (Edges.Top | Edges.Right)
     }
 }

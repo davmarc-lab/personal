@@ -12,6 +12,10 @@ Singleton {
     // readonly property var configsPath: shellPath + "configs/"
     readonly property var configsPath: Quickshell.env("HOME") + "/git-packages/personal/config/quickshell/configs/"
 
+    // wallpaper
+    property string wallpaperDir: Quickshell.env("HOME") + "/Pictures/Wallpapers/"
+    property string wallpaperFile: "glow-moon.jpg"
+
     property int panelMargin: 10
     property int itemMargin: 10
     property int itemRadius: 10
@@ -27,6 +31,12 @@ Singleton {
 
     // bar
     property int topBarMargin: panelMargin
+
+    // dock
+    property int dockWidth: 0
+    property real dockWidthFactor: 0.3
+    property int dockHeight: 400
+    property int dockRadius: 20
 
     // control panel
     property int controlPanelWidth: 400
