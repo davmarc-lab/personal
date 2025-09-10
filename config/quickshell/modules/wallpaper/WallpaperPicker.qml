@@ -9,115 +9,61 @@ import qs.common
 import qs.services
 import qs.widgets
 
-Scope {
-    Variants {
-        model: Quickshell.screens
+CPopup {
+    id: root
 
-        RPopupPane {
-            // FloatingPane {
-            id: root
+    open: Global.enableWPSelector
+    onOpenChanged: {
+        Global.enableWPSelector = this.open;
+    }
 
-            // visible: false
+    item: ColumnLayout {
+        anchors.fill: parent
 
-            baseColor: "transparent"
+        Item {
+            Layout.preferredWidth: parent.width * 0.7
+            Layout.fillHeight: true
 
-            required property var modelData
-            screen: modelData
+            Layout.maximumWidth: items.width
+            Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
 
-            implicitWidth: screen.width
-            implicitHeight: screen.height
-
-            property bool mouseDown: false
-
-            onMouseDownChanged: {
-                console.log(this.mouseDown);
-                if (root.mouseDown) {
-                    // check mouse position if it's outside the popup close
-                    // Global.enableWPSelector
-                }
-            }
-
-            MouseArea {
-                id: mouse
-
+            ScrollView {
+                id: control
                 anchors.fill: parent
-                width: root.screen.width
-                height: root.screen.height
+                ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
-                onPressedChanged: {
-                    root.mouseDown = this.pressed;
+                ScrollBar.vertical: ScrollBar {
+                    parent: control
+                    x: control.width + width
+                    y: control.topPadding
+                    height: control.availableHeight
+                    active: control.ScrollBar.horizontal.active
                 }
-            }
 
-            CRectangle {
-                anchors.centerIn: parent
-                width: root.screen.width * 0.4
-                height: root.screen.height * 0.4
+                GridLayout {
+                    id: items
 
-                ColumnLayout {
-                    anchors.centerIn: parent
+                    anchors.fill: parent
 
-                    Item {
-                        Layout.preferredWidth: parent.width * 0.7
-                        Layout.fillHeight: true
+                    rowSpacing: 50
+                    columnSpacing: 50
 
-                        Layout.maximumWidth: items.width
-                        Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+                    columns: 4
 
-                        ScrollView {
-                            id: control
-                            anchors.fill: parent
-                            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+                    Repeater {
+                        Layout.alignment: Qt.AlignHCenter
+                        model: SWallpaper.getDetected(true)
 
-                            ScrollBar.vertical: ScrollBar {
-                                parent: control
-                                x: control.width + width
-                                y: control.topPadding
-                                height: control.availableHeight
-                                active: control.ScrollBar.horizontal.active
-                            }
+                        delegate: ThumbImage {
+                            id: wp
+                            required property int index
+                            required property string modelData
 
-                            GridLayout {
-                                id: items
+                            imgIdx: index
+                            path: modelData
 
-                                anchors.fill: parent
-
-                                rowSpacing: 50
-                                columnSpacing: 50
-
-                                columns: 4
-
-                                Repeater {
-                                    Layout.alignment: Qt.AlignHCenter
-                                    model: SWallpaper.getDetected(true)
-
-                                    delegate: Image {
-                                        id: wp
-                                        required property int index
-                                        required property string modelData
-                                        source: modelData
-
-                                        Layout.preferredWidth: 280
-                                        Layout.preferredHeight: 200
-
-                                        // fillMode: Image.Pad
-                                        // horizontalAlignment: Image.AlignHCenter
-                                        // verticalAlignment: Image.AlignVCenter
-
-                                        asynchronous: true
-
-                                        MouseArea {
-                                            anchors.fill: parent
-
-                                            onClicked: {
-                                                SWallpaper.setCurrentByIndex(wp.index);
-                                            }
-                                            onPressedChanged: {
-                                                root.mouseDown = this.pressed;
-                                            }
-                                        }
-                                    }
-                                }
+                            onImageClicked: elem => {
+                                SWallpaper.setCurrentByIndex(elem);
                             }
                         }
                     }

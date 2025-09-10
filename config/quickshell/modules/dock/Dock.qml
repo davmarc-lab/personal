@@ -8,100 +8,107 @@ import QtQuick.Layouts
 import qs.common
 import qs.widgets
 
-Scope {
-    id: root
-    Variants {
-        model: Quickshell.screens
+PopupPane {
+    id: content
 
-        PopupPane {
-            id: content
+    implicitWidth: screen.width
+    implicitHeight: screen.height
 
-            required property var modelData
-            screen: modelData
+    color: "transparent"
 
-            anchors {
-                top: true
-            }
+    property bool mouseDown: false
+    onMouseDownChanged: {
+        if (mouseDown && (!hover.hovered && !fooHover.res)) {
+            Global.enableDock = false;
+        }
+    }
 
-            implicitWidth: Settings.dockWidth == 0 ? screen.width * Settings.dockWidthFactor : Settings.dockWidth
-            implicitHeight: back.implicitHeight
-            color: "transparent"
+    anchors {
+        top: true
+    }
 
-            // radius: Settings.dockRadius
+    MouseArea {
+        id: mouse
+        anchors.fill: parent
 
-            mask: Region {
-                item: back
-            }
+        onPressedChanged: {
+            content.mouseDown = this.pressed;
+        }
+    }
+
+    CRectangle {
+        id: masked
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        width: Settings.dockWidth == 0 ? content.screen.width * Settings.dockWidthFactor : Settings.dockWidth
+        height: 200
+
+        HoverHandler {
+            id: hover
+        }
+
+        ColumnLayout {
+            anchors.fill: parent
 
             CRectangle {
-                id: back
-
-                anchors.fill: parent
-
-                implicitHeight: main.height + foo.sizey
+                id: main
+                Layout.fillWidth: true
+                Layout.preferredHeight: 200
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter | Qt.AlignTop
+                // Layout.margins: Settings.dockRadius / 2
+                radius: Settings.dockRadius / 2
 
                 ColumnLayout {
                     anchors.fill: parent
 
-                    CRectangle {
-                        id: main
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: 200
-                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                        // Layout.margins: Settings.dockRadius / 2
-                        radius: Settings.dockRadius / 2
+                    CRButton {
+                        text: "Wallpaper"
+                        Layout.alignment: Qt.AlignHCenter
 
-                        ColumnLayout {
-                            anchors.fill: parent
-
-                            CRButton {
-                                text: "Wallpaper"
-                                Layout.alignment: Qt.AlignHCenter
-
-                                onClicked: {
-                                    Global.enableWPSelector = !Global.enableWPSelector;
-                                }
-                            }
-
-                            CButton {
-                                text: "Expand"
-
-                                Layout.alignment: Qt.AlignHCenter
-
-                                // anchors.centerIn: parent
-                                onClicked: {
-                                    foo.show = !foo.show;
-                                    console.log(main.height);
-                                    console.log(foo.height);
-                                    console.log(back.height);
-                                }
-                            }
+                        onClicked: {
+                            Global.enableWPSelector = !Global.enableWPSelector;
                         }
                     }
 
-                    CRectangle {
-                        id: foo
-                        Layout.fillWidth: true
-                        Layout.fillHeight: foo.show
+                    CButton {
+                        text: "Expand"
 
-                        property bool show: false
-                        property int sizey: foo.show ? 400 : 0
+                        Layout.alignment: Qt.AlignHCenter
 
-                        // Layout.margins: Settings.dockRadius / 2
-                        radius: Settings.dockRadius / 2
-
-                        opacity: show
-                        // visible: show
-                        color: Theme.colorError
-
-                        Behavior on opacity {
-                            NumberAnimation {
-                                duration: 200
-                                // easing.type: Easing.InOutQuad
-                            }
+                        // anchors.centerIn: parent
+                        onClicked: {
+                            foo.show = !foo.show;
                         }
                     }
                 }
+            }
+        }
+    }
+    CRectangle {
+        id: foo
+        // anchors.fill: masked
+        width: masked.width
+        height: 400
+        anchors.top: masked.bottom
+        anchors.left: masked.left
+
+        property bool show: false
+        property int sizey: foo.show ? 400 : 0
+
+        // Layout.margins: Settings.dockRadius / 2
+        radius: Settings.dockRadius / 2
+
+        opacity: show
+        color: Theme.colorError
+
+        HoverHandler {
+            id: fooHover
+            property bool res: this.hovered && foo.show
+        }
+
+        Behavior on opacity {
+            NumberAnimation {
+                duration: 200
             }
         }
     }

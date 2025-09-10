@@ -20,6 +20,9 @@ Singleton {
     property int itemMargin: 10
     property int itemRadius: 10
 
+    property int thumbWidth: 280
+    property int thumbHeight: 200
+
     // buttons
     property int buttonOutlineSize: 1
     property int buttonSoftRadius: 6
