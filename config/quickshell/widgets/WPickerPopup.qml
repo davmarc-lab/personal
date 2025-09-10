@@ -40,8 +40,8 @@ RPopupPane {
 
     CRectangle {
         anchors.centerIn: parent
-        width: root.screen.width * 0.4
-        height: root.screen.height * 0.4
+        width: root.screen.width * 0.6
+        height: root.screen.height * 0.6
 
         HoverHandler {
             id: contentArea

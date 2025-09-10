@@ -34,8 +34,8 @@ Singleton {
     }
 
     function setCurrent(name: string): void {
-        if (data.names.filter(s => s == name).length)
-            this.current = name;
+        if (data.names.filter(s => s == (path + name)).length)
+            this.current = path + name;
     }
 
     function getDetected(fullPath): bool {

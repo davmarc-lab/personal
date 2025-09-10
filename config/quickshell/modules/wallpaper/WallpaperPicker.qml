@@ -9,7 +9,7 @@ import qs.common
 import qs.services
 import qs.widgets
 
-CPopup {
+WPickerPopup {
     id: root
 
     open: Global.enableWPSelector
@@ -24,8 +24,8 @@ CPopup {
             Layout.preferredWidth: parent.width * 0.7
             Layout.fillHeight: true
 
-            Layout.maximumWidth: items.width
-            Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+            // Layout.maximumWidth: items.width
+            Layout.alignment: Qt.AlignHCenter
 
             ScrollView {
                 id: control
@@ -51,7 +51,7 @@ CPopup {
                     columns: 4
 
                     Repeater {
-                        Layout.alignment: Qt.AlignHCenter
+                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                         model: SWallpaper.getDetected(true)
 
                         delegate: ThumbImage {

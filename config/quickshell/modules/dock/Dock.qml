@@ -55,7 +55,7 @@ PopupPane {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 200
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter | Qt.AlignTop
-                // Layout.margins: Settings.dockRadius / 2
+
                 radius: Settings.dockRadius / 2
 
                 ColumnLayout {
@@ -75,7 +75,6 @@ PopupPane {
 
                         Layout.alignment: Qt.AlignHCenter
 
-                        // anchors.centerIn: parent
                         onClicked: {
                             foo.show = !foo.show;
                         }
@@ -84,9 +83,10 @@ PopupPane {
             }
         }
     }
+
     CRectangle {
         id: foo
-        // anchors.fill: masked
+
         width: masked.width
         height: 400
         anchors.top: masked.bottom
