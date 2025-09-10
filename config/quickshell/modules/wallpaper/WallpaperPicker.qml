@@ -1,9 +1,11 @@
+pragma ComponentBehavior: Bound
 import Quickshell
 
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 
+import qs.common
 import qs.services
 import qs.widgets
 
@@ -17,69 +19,102 @@ Scope {
 
             // visible: false
 
+            baseColor: "transparent"
+
             required property var modelData
             screen: modelData
 
-            implicitWidth: screen.width * 0.4
-            implicitHeight: screen.height * 0.4
+            implicitWidth: screen.width
+            implicitHeight: screen.height
 
-            ColumnLayout {
+            property bool mouseDown: false
+
+            onMouseDownChanged: {
+                console.log(this.mouseDown);
+                if (root.mouseDown) {
+                    // check mouse position if it's outside the popup close
+                    // Global.enableWPSelector
+                }
+            }
+
+            MouseArea {
+                id: mouse
+
                 anchors.fill: parent
+                width: root.screen.width
+                height: root.screen.height
 
-                Item {
-                    Layout.preferredWidth: parent.width * 0.7
-                    Layout.fillHeight: true
+                onPressedChanged: {
+                    root.mouseDown = this.pressed;
+                }
+            }
 
-                    Layout.maximumWidth: items.width
-                    Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+            CRectangle {
+                anchors.centerIn: parent
+                width: root.screen.width * 0.4
+                height: root.screen.height * 0.4
 
-                    ScrollView {
-                        id: control
-                        anchors.fill: parent
-                        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+                ColumnLayout {
+                    anchors.centerIn: parent
 
-                        ScrollBar.vertical: ScrollBar {
-                            parent: control
-                            x: control.width + width
-                            y: control.topPadding
-                            height: control.availableHeight
-                            active: control.ScrollBar.horizontal.active
-                        }
+                    Item {
+                        Layout.preferredWidth: parent.width * 0.7
+                        Layout.fillHeight: true
 
-                        GridLayout {
-                            id: items
+                        Layout.maximumWidth: items.width
+                        Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
 
+                        ScrollView {
+                            id: control
                             anchors.fill: parent
+                            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
-                            rowSpacing: 50
-                            columnSpacing: 50
+                            ScrollBar.vertical: ScrollBar {
+                                parent: control
+                                x: control.width + width
+                                y: control.topPadding
+                                height: control.availableHeight
+                                active: control.ScrollBar.horizontal.active
+                            }
 
-                            columns: 4
+                            GridLayout {
+                                id: items
 
-                            Repeater {
-                                Layout.alignment: Qt.AlignHCenter
-                                model: SWallpaper.getDetected(true)
+                                anchors.fill: parent
 
-                                delegate: Image {
-                                    id: wp
-                                    required property int index
-                                    required property string modelData
-                                    source: modelData
+                                rowSpacing: 50
+                                columnSpacing: 50
 
-                                    Layout.preferredWidth: 280
-                                    Layout.preferredHeight: 200
+                                columns: 4
 
-                                    // fillMode: Image.Pad
-                                    // horizontalAlignment: Image.AlignHCenter
-                                    // verticalAlignment: Image.AlignVCenter
+                                Repeater {
+                                    Layout.alignment: Qt.AlignHCenter
+                                    model: SWallpaper.getDetected(true)
 
-                                    asynchronous: true
+                                    delegate: Image {
+                                        id: wp
+                                        required property int index
+                                        required property string modelData
+                                        source: modelData
 
-                                    MouseArea {
-                                        anchors.fill: parent
+                                        Layout.preferredWidth: 280
+                                        Layout.preferredHeight: 200
 
-                                        onClicked: {
-                                            SWallpaper.setCurrentByIndex(wp.index);
+                                        // fillMode: Image.Pad
+                                        // horizontalAlignment: Image.AlignHCenter
+                                        // verticalAlignment: Image.AlignVCenter
+
+                                        asynchronous: true
+
+                                        MouseArea {
+                                            anchors.fill: parent
+
+                                            onClicked: {
+                                                SWallpaper.setCurrentByIndex(wp.index);
+                                            }
+                                            onPressedChanged: {
+                                                root.mouseDown = this.pressed;
+                                            }
                                         }
                                     }
                                 }

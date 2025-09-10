@@ -3,8 +3,6 @@ import Quickshell.Wayland
 
 import QtQuick
 
-import qs.common
-import qs.widgets
 import qs.services
 
 Scope {
@@ -25,6 +23,7 @@ Scope {
 
             Image {
                 id: name
+                anchors.fill: parent
                 source: SWallpaper.getCurrent()
             }
         }

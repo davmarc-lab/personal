@@ -37,7 +37,7 @@ ShellRoot {
     }
 
     LazyLoader {
-        active: Global.enableWPSelector
+        active: Global.enableWPSelector && Global.enableDock
         component: WallpaperPicker {}
     }
 
