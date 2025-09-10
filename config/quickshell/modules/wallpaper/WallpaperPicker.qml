@@ -12,7 +12,7 @@ Scope {
         model: Quickshell.screens
 
         RPopupPane {
-        // FloatingPane {
+            // FloatingPane {
             id: root
 
             // visible: false
@@ -78,7 +78,9 @@ Scope {
                                     MouseArea {
                                         anchors.fill: parent
 
-                                        onClicked: { SWallpaper.setCurrentByIndex(wp.index); }
+                                        onClicked: {
+                                            SWallpaper.setCurrentByIndex(wp.index);
+                                        }
                                     }
                                 }
                             }

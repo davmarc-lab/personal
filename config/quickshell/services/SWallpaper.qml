@@ -29,7 +29,7 @@ Singleton {
     }
 
     function setCurrentByIndex(index: int): void {
-        if (index > 0 && index < data.names.length)
+        if (index >= 0 && index < data.names.length)
             this.current = data.names[index];
     }
 
