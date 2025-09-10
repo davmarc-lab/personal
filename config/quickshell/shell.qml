@@ -37,7 +37,7 @@ ShellRoot {
     }
 
     LazyLoader {
-        active: Global.enableWallpaper
+        active: Global.enableWPSelector
         component: WallpaperPicker {}
     }
 
@@ -46,5 +46,8 @@ ShellRoot {
         component: Wallpaper {}
     }
 
-    LazyLoader { active: Global.enableFoo; component: Foo {}}
+    LazyLoader {
+        active: Global.enableFoo
+        component: Foo {}
+    }
 }

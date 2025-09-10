@@ -11,8 +11,8 @@ Scope {
     Variants {
         model: Quickshell.screens
 
-        // RPopupPane {
-        FloatingPane {
+        RPopupPane {
+        // FloatingPane {
             id: root
 
             // visible: false
@@ -58,19 +58,27 @@ Scope {
 
                             Repeater {
                                 Layout.alignment: Qt.AlignHCenter
-                                model: SWallpaper.getDetected()
+                                model: SWallpaper.getDetected(true)
 
                                 delegate: Image {
                                     id: wp
+                                    required property int index
                                     required property string modelData
-                                    source: SWallpaper.path + modelData
-                                    Layout.preferredWidth: 220
-                                    Layout.preferredHeight: 150
+                                    source: modelData
+
+                                    Layout.preferredWidth: 280
+                                    Layout.preferredHeight: 200
+
+                                    // fillMode: Image.Pad
+                                    // horizontalAlignment: Image.AlignHCenter
+                                    // verticalAlignment: Image.AlignVCenter
+
+                                    asynchronous: true
 
                                     MouseArea {
                                         anchors.fill: parent
 
-                                        onClicked: { SWallpaper.setCurrent(wp.modelData); }
+                                        onClicked: { SWallpaper.setCurrentByIndex(wp.index); }
                                     }
                                 }
                             }

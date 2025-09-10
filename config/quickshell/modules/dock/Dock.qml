@@ -51,15 +51,30 @@ Scope {
                         // Layout.margins: Settings.dockRadius / 2
                         radius: Settings.dockRadius / 2
 
-                        CButton {
-                            text: "Expand"
+                        ColumnLayout {
+                            anchors.fill: parent
 
-                            anchors.centerIn: parent
-                            onClicked: {
-                                foo.show = !foo.show;
-                                console.log(main.height);
-                                console.log(foo.height);
-                                console.log(back.height);
+                            CRButton {
+                                text: "Wallpaper"
+                                Layout.alignment: Qt.AlignHCenter
+
+                                onClicked: {
+                                    Global.enableWPSelector = !Global.enableWPSelector;
+                                }
+                            }
+
+                            CButton {
+                                text: "Expand"
+
+                                Layout.alignment: Qt.AlignHCenter
+
+                                // anchors.centerIn: parent
+                                onClicked: {
+                                    foo.show = !foo.show;
+                                    console.log(main.height);
+                                    console.log(foo.height);
+                                    console.log(back.height);
+                                }
                             }
                         }
                     }

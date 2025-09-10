@@ -28,21 +28,18 @@ Singleton {
         return path + current ?? "";
     }
 
+    function setCurrentByIndex(index: int): void {
+        if (index > 0 && index < data.names.length)
+            this.current = data.names[index];
+    }
+
     function setCurrent(name: string): void {
-        this.current = name;
+        if (data.names.filter(s => s == name).length)
+            this.current = name;
     }
 
-    function getDetected() {
-        return data.names;
-    }
-
-    function contains(name: string): bool {
-        for (var s in data.names) {
-            if (s == name) {
-                return true;
-            }
-        }
-        return false;
+    function getDetected(fullPath): bool {
+        return fullPath ? data.names.map(s => root.path + s) : data.names;
     }
 
     Item {
@@ -57,7 +54,7 @@ Singleton {
             stdout: StdioCollector {
                 onStreamFinished: {
                     wpDetect.running = false;
-                    for (var s of (this.text.split("\n"))) {
+                    for (var s of this.text.split("\n")) {
                         if (s.length) {
                             data.names.push(s);
                         }

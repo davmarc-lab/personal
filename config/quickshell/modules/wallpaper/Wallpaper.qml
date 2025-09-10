@@ -14,8 +14,11 @@ Scope {
             required property var modelData
             screen: modelData
 
+            exclusionMode: ExclusionMode.Ignore
+
             WlrLayershell.layer: WlrLayer.Background
             aboveWindows: false
+            color: "transparent"
 
             implicitWidth: screen.width
             implicitHeight: screen.height
@@ -27,4 +30,3 @@ Scope {
         }
     }
 }
-
