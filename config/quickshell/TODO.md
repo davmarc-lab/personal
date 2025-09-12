@@ -16,6 +16,8 @@
 
 ## Critical Fix
 
+- [ ] OMEGA CODE REFACTOR
+
 ## Other features
 
 - Colorscheme picker

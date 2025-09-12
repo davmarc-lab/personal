@@ -7,6 +7,7 @@ import QtQuick.Layouts
 
 import qs.common
 import qs.widgets
+import qs.services
 
 PopupPane {
     id: content
@@ -107,6 +108,30 @@ PopupPane {
 
                     ColumnLayout {
                         anchors.fill: parent
+
+                        RowLayout {
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
+                            spacing: 20
+
+                            Rectangle {
+                                Layout.preferredWidth: 100
+                                Layout.preferredHeight: 100
+
+                                Image {
+                                    id: name
+                                    anchors.fill: parent
+                                    source: Settings.shellPath + "assets/default-profile-icon.svg"
+                                    sourceSize.width: parent.width
+                                    sourceSize.height: parent.height
+                                }
+                            }
+
+                            CTitle {
+                                text: SUser.userName
+                            }
+
+                        }
 
                         CButton {
                             text: "Expand"

@@ -21,6 +21,7 @@ WPickerPopup {
         anchors.fill: parent
 
         Item {
+            id: main
             Layout.preferredWidth: parent.width * 0.7
             Layout.fillHeight: true
 
@@ -30,6 +31,9 @@ WPickerPopup {
             ScrollView {
                 id: control
                 anchors.fill: parent
+                implicitWidth: main.width
+                implicitHeight: main.height
+
                 ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
                 ScrollBar.vertical: ScrollBar {
@@ -44,11 +48,12 @@ WPickerPopup {
                     id: items
 
                     anchors.fill: parent
+                    anchors.horizontalCenter: main.horizontalCenter
 
                     rowSpacing: 50
                     columnSpacing: 50
 
-                    columns: 4
+                    columns: parent.width / (Settings.thumbWidth)
 
                     Repeater {
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter

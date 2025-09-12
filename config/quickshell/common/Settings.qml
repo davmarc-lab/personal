@@ -7,12 +7,17 @@ Singleton {
 
     readonly property var shellName: "quickshell"
 
-    readonly property var shellPath: Quickshell.env("HOME") + "/.config/" + shellName + "/"
+    // readonly property var shellPath: Quickshell.env("HOME") + "/.config/" + shellName + "/"
+    readonly property var shellPath: Quickshell.env("HOME") + "/git-packages/personal/config/quickshell/"
 
     // readonly property var configsPath: shellPath + "configs/"
     readonly property var configsPath: Quickshell.env("HOME") + "/git-packages/personal/config/quickshell/configs/"
 
-    readonly property var iconsPath: Quickshell.env("HOME") + "/.cache/quickshell/" + shellName + "/icons/"
+    readonly property var scriptPath: Quickshell.env("HOME") + "/git-packages/personal/config/quickshell/scripts/"
+
+    readonly property var cachePath: Quickshell.env("HOME") + "/.cache/quickshell/" + shellName + "/"
+
+    readonly property var iconsPath: cachePath + "icons/"
 
     // wallpaper
     property string wallpaperDir: Quickshell.env("HOME") + "/Pictures/Wallpapers/"
