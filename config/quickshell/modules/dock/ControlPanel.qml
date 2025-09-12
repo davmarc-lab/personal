@@ -6,7 +6,7 @@ import qs.widgets
 CRButton {
     id: ctl
 
-    text: " "
+    icon.source: Settings.iconsPath + "controls.svg"
     font.pointSize: Settings.fontSize
 
     HoverHandler {

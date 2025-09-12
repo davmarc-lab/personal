@@ -1,28 +1,14 @@
 import QtQuick
 import QtQuick.Layouts
 
+import qs.common
 import qs.widgets
 
-PopupPane {
+FloatingPane {
 
-    ColumnLayout {
-        anchors.fill: parent
-        Rectangle {
-            id: rect
-            Layout.preferredWidth: 100
-            height: 100
-            color: "red"
-
-            Behavior on Layout.preferredWidth {
-                NumberAnimation {
-                    duration: 1000
-                }
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: Layout.preferredWidth = 50
-            }
-        }
+    CRButton {
+        id: hello
+        icon.source: Settings.iconsPath + "power.svg"
     }
+
 }

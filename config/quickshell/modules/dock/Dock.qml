@@ -75,7 +75,7 @@ PopupPane {
 
                         CRButton {
                             Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-                            text: ""
+                            icon.source: Settings.iconsPath + "wallpaper.svg"
                             onClicked: {
                                 Global.enableWPSelector = !Global.enableWPSelector;
                                 Global.enableDock = false;
@@ -84,7 +84,7 @@ PopupPane {
 
                         CRButton {
                             Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-                            text: " "
+                            icon.source: Settings.iconsPath + "settings.svg"
                             onClicked: {
                                 Global.enableSettings = !Global.enableSettings;
                                 Global.enableDock = false;
@@ -93,7 +93,7 @@ PopupPane {
 
                         CRButton {
                             Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-                            text: " "
+                            icon.source: Settings.iconsPath + "power.svg"
                             onClicked: {
                                 Global.enablePowerMenu = true;
                                 Global.enableDock = false;
@@ -121,7 +121,7 @@ PopupPane {
                                 Image {
                                     id: name
                                     anchors.fill: parent
-                                    source: Settings.shellPath + "assets/default-profile-icon.svg"
+                                    source: Settings.iconsPath + "profile-icon.svg"
                                     sourceSize.width: parent.width
                                     sourceSize.height: parent.height
                                 }

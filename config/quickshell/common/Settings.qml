@@ -17,7 +17,7 @@ Singleton {
 
     readonly property var cachePath: Quickshell.env("HOME") + "/.cache/quickshell/" + shellName + "/"
 
-    readonly property var iconsPath: cachePath + "icons/"
+    readonly property var iconsPath: shellPath + "assets/icons/"
 
     // wallpaper
     property string wallpaperDir: Quickshell.env("HOME") + "/Pictures/Wallpapers/"

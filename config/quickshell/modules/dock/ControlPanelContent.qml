@@ -58,13 +58,13 @@ RPopupPane {
                 CButton {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    text: ""
+                    icon.source: Settings.iconsPath + "wifi.svg"
                 }
 
                 CButton {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    text: " "
+                    icon.source: Settings.iconsPath + "bluetooth.svg"
                 }
             }
 
@@ -102,13 +102,13 @@ RPopupPane {
                         }
                     }
 
-                    text: volumeBar.visible ? undefined : ""
+                    icon.source: volumeBar.visible ? "" : Settings.iconsPath + "volume-on.svg"
                 }
 
                 CButton {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    text: ""
+                    icon.source: Settings.iconsPath + "moon.svg"
                 }
             }
         }
