@@ -5,17 +5,22 @@
 - [ ] Add color picker on `Rectangle` in `ThemeSettings` theme item
 - [ ] Fix `SimpleBar` layout and `SystemTray`
 - [ ] User data/pic
-- [ ] Powermenu
+- [X] Powermenu
 - [X] Wallpaper picker
-- [ ] Fix Wallpaper picker layout and implement open/close button/shortcut
 - [ ] **Screen lock**
 - [ ] Phone link
 
+## Fix
+- [ ] Fix Wallpaper picker layout and implement open/close button/shortcut
+- [ ] Fix Powermenu colorscheme
+
+## Critical Fix
+
 ## Other features
 
-- Implement colorscheme loader
-- Implement colorscheme save system
 - Colorscheme picker
+- [ ] Implement colorscheme loader
+- [ ] Implement colorscheme save system
 - [ ] Resource Usage
 - [ ] mpd && playerctl
 - [ ] Notification button

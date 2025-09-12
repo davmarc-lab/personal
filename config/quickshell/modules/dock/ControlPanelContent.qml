@@ -58,13 +58,13 @@ RPopupPane {
                 CButton {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    text: "Wifi"
+                    text: ""
                 }
 
                 CButton {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    text: "BT"
+                    text: " "
                 }
             }
 
@@ -102,13 +102,13 @@ RPopupPane {
                         }
                     }
 
-                    text: volumeBar.visible ? undefined : "Volume"
+                    text: volumeBar.visible ? undefined : ""
                 }
 
                 CButton {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    text: "Disturb"
+                    text: ""
                 }
             }
         }

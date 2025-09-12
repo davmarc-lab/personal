@@ -6,6 +6,9 @@ import qs.widgets
 CRButton {
     id: ctl
 
+    text: " "
+    font.pointSize: Settings.fontSize
+
     HoverHandler {
         onHoveredChanged: {
             Global.ctlPanelButtonHover = this.hovered;

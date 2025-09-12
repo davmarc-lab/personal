@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 
 import Quickshell
 import Quickshell.Hyprland
+import Quickshell.Wayland
 
 import QtQuick
 import QtQuick.Controls
@@ -21,6 +22,8 @@ Scope {
             id: mainBar
             required property var modelData
             screen: modelData
+
+            WlrLayershell.layer: WlrLayer.Top
 
             anchors {
                 top: true

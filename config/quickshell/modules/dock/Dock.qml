@@ -31,6 +31,8 @@ PopupPane {
         id: mouse
         anchors.fill: parent
 
+        propagateComposedEvents: true
+
         onPressedChanged: {
             content.mouseDown = this.pressed;
         }
@@ -47,36 +49,73 @@ PopupPane {
             id: hover
         }
 
-        ColumnLayout {
+        CRectangle {
+            id: main
             anchors.fill: parent
+            height: 200
+            // Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter | Qt.AlignTop
 
-            CRectangle {
-                id: main
-                Layout.fillWidth: true
-                Layout.preferredHeight: 200
-                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter | Qt.AlignTop
+            radius: Settings.dockRadius / 2
 
-                radius: Settings.dockRadius / 2
+            RowLayout {
+                anchors.fill: parent
 
-                ColumnLayout {
-                    anchors.fill: parent
+                Item {
+                    Layout.preferredWidth: parent.height * 0.2
+                    Layout.fillHeight: true
 
-                    CRButton {
-                        text: "Wallpaper"
-                        Layout.alignment: Qt.AlignHCenter
+                    ColumnLayout {
+                        anchors.fill: parent
 
-                        onClicked: {
-                            Global.enableWPSelector = !Global.enableWPSelector;
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+
+                        BarFiller {}
+
+                        CRButton {
+                            Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+                            text: ""
+                            onClicked: {
+                                Global.enableWPSelector = !Global.enableWPSelector;
+                                Global.enableDock = false;
+                            }
+                        }
+
+                        CRButton {
+                            Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+                            text: " "
+                            onClicked: {
+                                Global.enableSettings = !Global.enableSettings;
+                                Global.enableDock = false;
+                            }
+                        }
+
+                        CRButton {
+                            Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+                            text: " "
+                            onClicked: {
+                                Global.enablePowerMenu = true;
+                                Global.enableDock = false;
+                            }
                         }
                     }
+                }
 
-                    CButton {
-                        text: "Expand"
+                Item {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
 
-                        Layout.alignment: Qt.AlignHCenter
+                    ColumnLayout {
+                        anchors.fill: parent
 
-                        onClicked: {
-                            foo.show = !foo.show;
+                        CButton {
+                            text: "Expand"
+
+                            Layout.alignment: Qt.AlignHCenter
+
+                            onClicked: {
+                                foo.show = !foo.show;
+                            }
                         }
                     }
                 }

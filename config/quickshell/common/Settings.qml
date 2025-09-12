@@ -12,6 +12,8 @@ Singleton {
     // readonly property var configsPath: shellPath + "configs/"
     readonly property var configsPath: Quickshell.env("HOME") + "/git-packages/personal/config/quickshell/configs/"
 
+    readonly property var iconsPath: Quickshell.env("HOME") + "/.cache/quickshell/" + shellName + "/icons/"
+
     // wallpaper
     property string wallpaperDir: Quickshell.env("HOME") + "/Pictures/Wallpapers/"
     property string wallpaperFile: "glow-moon.jpg"

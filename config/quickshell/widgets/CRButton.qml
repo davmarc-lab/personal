@@ -12,10 +12,7 @@ RoundButton {
     property var fgColor: Theme.colorOnPrimary
     property var fgColorHovered: Theme.colorOnPrimary
 
-    anchors {
-        leftMargin: Settings.itemMargin
-        topMargin: Settings.itemMargin
-    }
+    font.pointSize: Settings.fontSize
 
     palette.buttonText: this.hovered ? this.fgColorHovered : this.fgColor
     palette.button: bgColor

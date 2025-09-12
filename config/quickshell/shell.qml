@@ -7,6 +7,7 @@ import qs.modules
 import qs.modules.settings
 import qs.modules.dock
 import qs.modules.wallpaper
+import qs.modules.powermenu
 
 // (=^.^=)
 
@@ -37,8 +38,13 @@ ShellRoot {
     }
 
     LazyLoader {
-        active: Global.enableWPSelector && Global.enableDock
+        active: Global.enableWPSelector
         component: WallpaperPicker {}
+    }
+
+    LazyLoader {
+        active: Global.enablePowerMenu
+        component: PowerMenu {}
     }
 
     LazyLoader {

@@ -35,5 +35,7 @@ Button {
         radius: root.borderRadius
     }
 
+    font.pointSize: Settings.fontSize
+
     palette.buttonText: this.hovered ? this.fgColorHovered : this.fgColor
 }

@@ -9,12 +9,13 @@ Singleton {
     property bool enableNotification: true
     property bool enableSysTray: false
 
-    property bool enableSettings: false
     property bool enableFoo: false
     property bool enableWallpaper: true
-    property bool enableWPSelector: false
 
     property bool enableDock: false
+    property bool enablePowerMenu: false
+    property bool enableSettings: false
+    property bool enableWPSelector: false
 
     // control panel
     property bool ctlPanelOpen: false
