@@ -16,5 +16,4 @@ tree-sitter-cli
 fd
 ripgrep
 htop
-go
 playerctl

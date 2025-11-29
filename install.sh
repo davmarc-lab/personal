@@ -57,27 +57,4 @@ echo '-- setting up git config user.email and user.name globally --'
 git config --global user.email "$GIT_EMAIL"
 git config --global user.name "$GIT_NAME"
 
-echo 'AUR package manager'
-read -r -p "Do you want to install yay? [Y/n] " response
-response=${response,,}
-if [[ $response =~ ^(y| ) ]] || [[ -z $response ]]; then
-    if [[ ! -e $HOME/git-packages ]] then
-        mkdir $HOME/git-packages
-    fi
-    OLDPWD=`pwd`
-    cd $HOME/git-packages && git clone https://aur.archlinux.org/yay.git && \
-        cd yay
-    makepkg -si
-    ERR=$?
-    if [[ $? > 0 ]] then 
-        err "'makepkg' failed with code $ERR"
-        exit $ERR
-    fi
-    # yay first use
-    yay -Y --gendb
-    echo '-- yay db generated --'
-    yay -Syu --devel
-    echo '-- yay devel updated --'
-    yay -Y --devel --save
-    echo '-- yay devel saved --'
-fi
+echo 'Operation completed'
