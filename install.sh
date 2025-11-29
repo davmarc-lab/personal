@@ -46,8 +46,8 @@ source $HOME/.bashrc
 
 ./config-install.sh
 
-GIT_EMAIL="davide.marchetti6@studio.unibo.it"
-GIT_NAME="Davide Marchetti"
+GIT_EMAIL=""
+GIT_NAME=""
 
 # generate ssh key for github
 echo '-- generating ssh key for github --'

@@ -1,14 +1,1 @@
-alacritty
-btop
-cvim
-dunst
-htop
-hypr
-kitty
-nvim
-nvim-old
-ohmyposh
 waybar
-tmux
-vim
-quickshell

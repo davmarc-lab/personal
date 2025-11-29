@@ -5,7 +5,6 @@ cargo
 less
 man
 bash-completion
-tmux
 nvim
 lua
 lua51
@@ -16,12 +15,6 @@ tree-sitter
 tree-sitter-cli
 fd
 ripgrep
-firefox
 htop
-btop
-bitwarden
-docker
-dolphin
 go
 playerctl
-kolourpaint
