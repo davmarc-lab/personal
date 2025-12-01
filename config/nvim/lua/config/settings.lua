@@ -1,5 +1,4 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+-- All config for nvim editor feature and appereance
 
 -- don't open netrw
 vim.g.loaded_netrw = 1
@@ -33,7 +32,7 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
--- don't highlight words after search
+-- don't highlight works after search
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 

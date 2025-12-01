@@ -73,14 +73,20 @@ return {
             require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
             require("mason-lspconfig").setup({
+                ensure_installed = {},
+                automatic_installation = {},
                 handlers = {
                     function(server_name)
                         local server = servers[server_name] or {}
                         server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-                        require("lspconfig")[server_name].setup(server)
+                        vim.lsp.config(server_name, server)
+                        vim.lsp.enable(server_name)
                     end,
                 },
             })
+            vim.lsp.config['qmlls'] = {
+                cmd = { "qmlls", "-E" }
+            }
         end,
     },
     {
@@ -99,7 +105,7 @@ return {
         opts = {
             notify_on_error = false,
             format_on_save = function(bufnr)
-                local disable_filetypes = { c = true, cpp = true, glsl = true, lua = true, html = true, css = true, java = true, rs = true }
+                local disable_filetypes = { c = true, cpp = true, glsl = true, lua = true, html = true, css = true, java = true, rs = true, qml = true }
                 return {
                     timeout_ms = 500,
                     lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -193,5 +199,3 @@ return {
         end,
     },
 }
-
-
