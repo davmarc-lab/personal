@@ -1,0 +1,42 @@
+let mapleader = " "
+
+set relativenumber
+" integrate with system clipboard
+" set clipboard=unnamedplus,unnamed,ideaput
+nnoremap d "_d
+vnoremap d "_d
+nnoremap y "+y
+vnoremap y "+y
+nnoremap Y "+y
+
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+
+" remap common macros
+nnoremap Q @q
+vnoremap Q @q
+
+nnoremap ;; :noh<CR>
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+nmap <leader>pf <Action>(com.mituuz.fuzzier.search.FuzzierVCS)
+nmap <leader>ps <Action>(com.mituuz.fuzzier.grep.FuzzyGrepCI)
+
+nmap <leader>df <Action>(ShowErrorDescription)
+nmap [d <Action>(GotoPreviousError)
+nmap ]d <Action>(GotoNextError)
+nmap <leader>ca <Action>(ShowIntentionActions)
+nmap gd <Action>(GotoDeclaration)
+nmap gi <Action>(GotoImplementation)
+
+nmap <leader>rn <Action>(RenameElement)
+nmap <leader>f <Action>(ReformatCode)
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+
