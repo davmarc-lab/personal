@@ -1,0 +1,43 @@
+-- vim.pack.add({
+--     "https://github.com/folke/snacks.nvim",
+--     "https://github.com/nvim-tree/nvim-web-devicons",
+-- })
+--
+-- require("nvim-web-devicons").setup({})
+--
+-- local Snacks = require("snacks")
+--
+-- Snacks.setup({
+--     animate = { enabled = true },
+--     bigfile = { enabled = false },
+--     bufdelete = { enabled = false },
+--     dashboard = { enabled = false },
+--     debug = { enabled = true },
+--     dim = { enabled = false },
+--     explorer = { enabled = false },
+--     gh = { enabled = false },
+--     git = { enabled = false },
+--     gitbrowse = { enabled = false },
+--     image = { enabled = false },
+--     indent = { enabled = false },
+--     input = { enabled = true },
+--     keymap = { enabled = false },
+--     layout = { enabled = false },
+--     lazygit = { enabled = true },
+--     notifier = { enabled = false },
+--     notify = { enabled = false },
+--     picker = { enabled = true },
+--     profiler = { enabled = false },
+--     quickfile = { enabled = false },
+--     rename = { enabled = true },
+--     scope = { enabled = false },
+--     scratch = { enabled = false },
+--     scroll = { enabled = false },
+--     statuscolumn = { enabled = false },
+--     terminal = { enabled = false },
+--     toggle = { enabled = false },
+--     util = { enabled = true },
+--     win = { enabled = false },
+--     words = { enabled = false },
+--     zen = { enabled = false },
+-- })
