@@ -47,6 +47,23 @@ return {
                 }
             })
 
+            vim.lsp.config("texlab", {
+                cmd = { "texlab" },
+                filetypes = { "tex", "bib" },
+                settings = {
+                    texlab = {
+                        build = {
+                            onSave = false,
+                            executable = "latexmk",
+                            args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+                        },
+                        chktex = { onOpenAndSave = true },
+                        -- This helps Texlab find your labels in complex documents
+                        auxDirectory = "./build",
+                    },
+                },
+            })
+
             vim.lsp.config("*", {
                 capabilities = require("blink.cmp").get_lsp_capabilities(),
             })
