@@ -1,6 +1,5 @@
 return {
-    "marko-cerovac/material.nvim",
+    "olimorris/onedarkpro.nvim",
     lazy = false,
     priority = 1000,
 }
-

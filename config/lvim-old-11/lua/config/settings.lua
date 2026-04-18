@@ -32,13 +32,9 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
--- don't highlight works after search
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 50
-
-require('vim._core.ui2').enable()
-
