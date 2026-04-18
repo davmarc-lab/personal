@@ -40,5 +40,6 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 50
 
-require('vim._core.ui2').enable()
+vim.opt.ruler = false
 
+require("vim._core.ui2").enable()
