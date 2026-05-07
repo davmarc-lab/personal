@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 MISSING_ARGS=1
 GENERIC_ERROR=2

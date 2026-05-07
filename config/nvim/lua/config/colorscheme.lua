@@ -1,2 +1,1 @@
-vim.cmd.colorscheme "cyberdream"
-
+vim.cmd.colorscheme("catppuccin-nvim")
