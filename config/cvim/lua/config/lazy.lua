@@ -19,52 +19,48 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup plugins
 require("lazy").setup({
-        { import = "plugins.colorscheme" },
-        { import = "plugins.core" },
-        { import = "plugins.lsp" },
+    { import = "plugins.colorscheme" },
+    { import = "plugins.core" },
+    { import = "plugins.lsp" },
+}, {
+    ui = {
+        border = "rounded",
+        title = "Package Manager",
+        title_pos = "center",
+        icons = {
+            cmd = " ",
+            config = "",
+            event = "",
+            ft = " ",
+            init = " ",
+            import = " ",
+            keys = " ",
+            lazy = "󰒲 ",
+            loaded = "●",
+            not_loaded = "○",
+            plugin = " ",
+            runtime = " ",
+            require = "󰢱 ",
+            source = " ",
+            start = "",
+            task = "✔ ",
+            list = {
+                "●",
+                "➜",
+                "★",
+                "‒",
+            },
+        },
     },
-    {
-        defaults = {
-            version = "*",
-        },
-        ui = {
-            border = "rounded",
-            title = "Package Manager",
-            title_pos = "center",
-            icons = {
-                cmd = " ",
-                config = "",
-                event = "",
-                ft = " ",
-                init = " ",
-                import = " ",
-                keys = " ",
-                lazy = "󰒲 ",
-                loaded = "●",
-                not_loaded = "○",
-                plugin = " ",
-                runtime = " ",
-                require = "󰢱 ",
-                source = " ",
-                start = "",
-                task = "✔ ",
-                list = {
-                    "●",
-                    "➜",
-                    "★",
-                    "‒",
-                },
-            }
-        },
-        install = {
-            colorscheme = { "onedark" }
-        },
-        checker = {
-            enable = true,
-            notify = false,
-            frequency = 3600 * 4,
-        },
-        change_detection = {
-            notify = false,
-        },
-    })
+    install = {
+        colorscheme = { "catppuccin-macchiato" },
+    },
+    checker = {
+        enable = true,
+        notify = false,
+        frequency = 3600 * 4,
+    },
+    change_detection = {
+        notify = false,
+    },
+})

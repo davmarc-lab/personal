@@ -20,6 +20,7 @@ function sync_config () {
     FOUND=`ls -d $HOME/.config/$FILE 2> /dev/null | wc -l`
     if [[ $FOUND -ge 1 ]] then
         echo "($FILE) config found ... copying into '$DST' directory"
+        rm -rf "$DST/$FILE"
         cp -r "$HOME/.config/$FILE" "$DST/"
     else
         echo "($FILE) config not found -- skipping"
