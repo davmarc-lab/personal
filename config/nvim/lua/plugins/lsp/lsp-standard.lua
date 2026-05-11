@@ -36,32 +36,12 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"stylua",
-					"qmlls",
 				},
 				automatic_enable = true,
 			})
 
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 			vim.tbl_deep_extend("force", capabilities, require("lsp-file-operations").default_capabilities())
-
-			vim.lsp.config("lua_ls", {
-				runtime = {
-					-- Tell the language server which version of Lua you're using
-					version = "LuaJIT",
-				},
-				diagnostics = {
-					-- Get the language server to recognize the `vim` global
-					globals = { "vim" },
-				},
-				workspace = {
-					checkThirdParty = false,
-					library = {
-						-- Make the server aware of Neovim runtime files
-						vim.env.VIMRUNTIME,
-						vim.fn.stdpath("config"),
-					},
-				},
-			})
 
 			vim.lsp.config("*", {
 				capabilities = capabilities,
@@ -104,8 +84,8 @@ return {
 						})
 
 						vim.api.nvim_create_autocmd("LspDetach", {
-							group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
-							callback = function(_)
+							group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+							callback = function(event2)
 								vim.lsp.buf.clear_references()
 							end,
 						})
