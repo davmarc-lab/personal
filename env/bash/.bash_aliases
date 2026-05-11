@@ -41,3 +41,42 @@ alias cvim='NVIM_APPNAME="cvim" nvim'
 # testing configurations
 # alias tvim='NVIM_APPNAME="tvim" nvim'
 
+# --- custom functions ---
+
+###
+# Clone a repository using ssh with the given repo name. If the username is not specified
+# it tries to query user.username (set manually) from '.gitconfig'.
+###
+sgc () {
+    if [[ $# -eq 0 ]]; then
+        echo "No repo cloned..."
+        return 1
+    fi
+
+    if [[ $# -eq 2 ]]; then
+        link="git@github.com:${1}/${2}.git"
+    elif [[ $# -eq 1 ]]; then
+        link="git@github.com:$(git config --global --get user.username)/${1}.git"
+    fi
+
+    echo "Link => ${link}"
+    git clone "${link}"
+}
+
+###
+# Clone a repository using https with the given username and repo name.
+###
+gc () {
+    if [[ $# -eq 0 ]]; then
+        echo "No repo cloned..."
+        return 1
+    fi
+
+    if [[ $# -eq 2 ]]; then
+        link="https://github.com/${1}/${2}.git"
+    fi
+
+    echo "Link => ${link}"
+    git clone $link
+}
+

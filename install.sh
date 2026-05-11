@@ -57,6 +57,7 @@ source $HOME/.bashrc
 
 GIT_EMAIL="davide.marchetti6@studio.unibo.it"
 GIT_NAME="Davide Marchetti"
+GIT_USER="davmarc-lab"
 
 # generate ssh key for github
 echo '-- generating ssh key for github --'
@@ -65,6 +66,8 @@ ssh-keygen -t ed25519 -C "$GIT_EMAIL"
 echo '-- setting up git config user.email and user.name globally --'
 git config --global user.email "$GIT_EMAIL"
 git config --global user.name "$GIT_NAME"
+# used for custom functions --- see env/bash/.bash_aliases
+git config --global user.username "$GIT_NAME"
 
 echo 'AUR package manager'
 read -r -p "Do you want to install yay? [Y/n] " response
