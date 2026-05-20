@@ -12,10 +12,12 @@ return {
                 vim.keymap.set(mode, l, r, opts)
             end
 
-            map("n", "<leader>hd", function() gs.diffthis(vim.lsp.bufnr) end)
-            map("n", "<leader>hD", function() gs.diffthis("~") end)
-
-        end
+            map("n", "<leader>hd", function()
+                gs.diffthis(vim.lsp.bufnr)
+            end)
+            map("n", "<leader>hD", function()
+                gs.diffthis("~")
+            end)
+        end,
     },
 }
-

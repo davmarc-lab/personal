@@ -47,7 +47,10 @@ return {
 				capabilities = capabilities,
 			})
 
-			vim.lsp.enable("qmlls")
+			vim.lsp.config("qmlls", {
+				capabilities = capabilities,
+				cmd = { "qmlls", "-E" },
+			})
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				callback = function(event)

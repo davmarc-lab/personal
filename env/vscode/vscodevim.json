@@ -1,7 +1,13 @@
 {
+    // ui
     "window.autoDetectColorScheme": true,
     "editor.minimap.enabled": false,
+    "workbench.settings.showAISearchToggle": false,
+    // chat
+    "chat.titleBar.signIn.enabled": false,
+    "chat.disableAIFeatures": true,
     "java.inlayHints.parameterNames.enabled": "none",
+    // vim
     "vim.leader": "<space>",
     "vim.normalModeKeyBindings": [
         {
@@ -82,5 +88,5 @@
     },
     "editor.stickyScroll.enabled": false,
     "vim.smartRelativeLine": true,
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
 }
