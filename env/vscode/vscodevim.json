@@ -1,15 +1,29 @@
 {
     // ui
-    "window.autoDetectColorScheme": true,
     "editor.minimap.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "window.autoDetectColorScheme": true,
     "workbench.settings.showAISearchToggle": false,
+    "workbench.sideBar.location": "right",
+    "workbench.browser.showInTitleBar": false,
+    "workbench.navigationControl.enabled": false,
+    "workbench.preferredDarkColorTheme": "Visual Studio Dark",
     // chat
     "chat.titleBar.signIn.enabled": false,
     "chat.disableAIFeatures": true,
     "java.inlayHints.parameterNames.enabled": "none",
-    // vim
+    // --- Vim ---
     "vim.leader": "<space>",
     "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<C-n>",
+            ],
+            "commands": [
+                "workbench.action.toggleSidebarVisibility"
+            ],
+            "silent": true,
+        },
         {
             "before": [
                 "<C-h>"
@@ -48,13 +62,38 @@
         },
         {
             "before": [
+                "n"
+            ],
+            "after": [
+                "n",
+                "z",
+                "z",
+                "z",
+                "v",
+            ]
+        },
+        {
+            "before": [
+                "N"
+            ],
+            "after": [
+                "N",
+                "z",
+                "z",
+                "z",
+                "v",
+            ]
+        },
+        {
+            "before": [
                 "<leader>",
                 "p",
                 "t"
             ],
             "commands": [
                 "workbench.action.terminal.toggleTerminal"
-            ]
+            ],
+            "silent": true,
         },
         {
             "before": [
@@ -64,7 +103,19 @@
             ],
             "commands": [
                 "workbench.action.quickOpen"
-            ]
+            ],
+            "silent": true,
+        },
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "t"
+            ],
+            "commands": [
+                "workbench.action.terminal.toggleTerminal"
+            ],
+            "silent": true,
         },
         {
             "before": [
@@ -73,20 +124,140 @@
             ],
             "commands": [
                 "editor.action.formatDocument"
+            ],
+            "silent": true,
+        },
+        {
+            "before": [
+                "<leader>",
+                "c",
+                "a"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "d",
+                "f"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "[",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.prev"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "]",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ],
+            "silent": true
+        },
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                "p"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "d",
+                "P"
             ]
         },
     ],
-    "vim.handleKeys": {
-        "<C-a>": false,
-        "<C-n>": true,
-        "<C-p>": true,
-        "<C-t>": true
-    },
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "y"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "y"
+            ]
+        },
+        {
+            "before": [
+                "Y"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "y",
+                "y"
+            ]
+        },
+        {
+            "before": [
+                "d"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "d"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "y"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "y"
+            ]
+        },
+        {
+            "before": [
+                "d"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "d"
+            ]
+        }
+    ],
     // To improve performance
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1
     },
-    "editor.stickyScroll.enabled": false,
     "vim.smartRelativeLine": true,
     "editor.lineNumbers": "relative",
+    // --- Vim ---
+    "workbench.editorAssociations": {
+        "{git,gitlens,chat-editing-snapshot-text-model,copilot,git-graph,git-graph-3}:/**/*.qrc": "default",
+        "*.qrc": "qt-core.qrcEditor"
+    },
+    "qt-core.additionalQtPaths": [
+        {
+            "name": "Qt-5.15.18-linux-g++_from_PATH",
+            "path": "/usr/bin/qmake"
+        }
+    ],
+    "qt-qml.qmlls.useQmlImportPathEnvVar": true,
+    // --- Plugins ---
+    // icons
+    "vsicons.dontShowNewVersionMessage": true,
+    "workbench.iconTheme": "vscode-icons",
 }
