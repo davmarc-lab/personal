@@ -7,6 +7,7 @@ return {
             "WhoIsSethDaniel/mason-tool-installer.nvim",
             { "folke/lazydev.nvim", opts = {} },
             "saghen/blink.cmp",
+            "barreiroleo/ltex_extra.nvim",
         },
         config = function()
             local mason = require("mason")
@@ -27,24 +28,37 @@ return {
                     "lua_ls",
                     "stylua",
                     "ltex_plus",
-                    "texlab"
+                    "texlab",
                 },
-                automatic_enable = true
+                automatic_enable = true,
             })
 
             vim.lsp.config("ltex_plus", {
                 filetypes = {
                     "tex",
                     "bib",
-                    "markdown"
+                    "markdown",
                 },
                 settings = {
                     ltex = {
-                        "tex",
-                        "bib",
-                        "markdown"
-                    }
-                }
+                        enabled = { "markdown", "tex", "latex", "bib", "plaintext", "text" },
+                    },
+                },
+                on_attach = function(_)
+                    require("ltex_extra").setup({
+                        load_langs = { "en-US", "it" },
+                        path = vim.fn.stdpath("config") .. "/ltex",
+                    })
+                end,
+            })
+
+            vim.lsp.config("ltex_ls", {
+                filetypes = { "tex", "latex" },
+                settings = {
+                    ltexPlus = {
+                        language = "en_US",
+                    },
+                },
             })
 
             vim.lsp.config("texlab", {
@@ -103,10 +117,10 @@ return {
                         })
 
                         vim.api.nvim_create_autocmd("LspDetach", {
-                            group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+                            group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
                             callback = function(event2)
                                 vim.lsp.buf.clear_references()
-                                vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+                                vim.api.nvim_clear_autocmds({ buffer = event2.buf })
                             end,
                         })
                     end
@@ -157,9 +171,9 @@ return {
                 end)(),
                 dependencies = {
                     {
-                        'rafamadriz/friendly-snippets',
+                        "rafamadriz/friendly-snippets",
                         config = function()
-                            require('luasnip.loaders.from_vscode').lazy_load()
+                            require("luasnip.loaders.from_vscode").lazy_load()
                         end,
                     },
                 },
