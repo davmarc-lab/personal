@@ -28,6 +28,9 @@ hl.bind("Print", hl.dsp.exec_cmd(vars.capture.region))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd(vars.capture.window))
 hl.bind("CTRL + SHIFT + Print", hl.dsp.exec_cmd(vars.capture.screen))
 
+-- Lock hyprland session (hyprlock)
+hl.bind(vars.mod .. " + SHIFT + x", hl.dsp.exec_cmd("hyprlock"))
+
 require("keybinds.audio")
 require("keybinds.workspaces")
 

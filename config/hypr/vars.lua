@@ -26,7 +26,7 @@ local vars = {
     },
     enable = {
         quickshell = false,
-        discord = true,
+        discord = false,
     },
 }
 
