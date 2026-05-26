@@ -38,6 +38,7 @@
 
 #custom-music,
 #custom-pomodoro,
+#language,
 #tray,
 #clock,
 #pulseaudio {
@@ -63,7 +64,7 @@
     margin-right: 1rem;
 }
 
-#custom-pomodoro {
+#language {
     color: @green;
     border-radius: 1rem;
     margin-right: 1rem;

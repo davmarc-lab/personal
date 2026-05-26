@@ -4,9 +4,9 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["custom/pomodoro", "custom/music", "pulseaudio", "tray", ],
+    "modules-right": [ "hyprland/language", "custom/music", "pulseaudio", "tray" ],
     "hyprland/workspaces": {
-         "disable-scroll": true,
+        "disable-scroll": true,
     },
     "tray": {
         "icon-size": 21,
@@ -35,12 +35,9 @@
         },
         // "on-click": "pavucontrol"
     },
-    "custom/pomodoro": {
-        // https://github.com/Andeskjerf/waybar-module-pomodoro
-        "format": "{}",
-        "return-type": "json",
-        "exec": "waybar-module-pomodoro -w 45",
-        "on-click": "waybar-module-pomodoro toggle",
-        "on-click-right": "waybar-module-pomodoro reset",
-    },
+    "hyprland/language": {
+        "format": "󰌌   {}",
+        "format-en": "en",
+        "format-it": "it"
+    }
 }
