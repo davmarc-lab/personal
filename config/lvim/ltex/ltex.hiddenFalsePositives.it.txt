@@ -1,3 +1,4 @@
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qper caratterizzare sistemi capaci di risolvere problemi complessi senza però capacità di ragionamento e comprensione.\\E$"}
 {"rule":"ER_01_001","sentence":"^\\QRiproduzione parziale dell'attività intellettuale propria dell'uomo (con particolare riguardo ai processi di apprendimento, di riconoscimento, di scelta) realizzata o attraverso l'elaborazione di modelli ideali, o, concretamente, con la messa a punto di macchine che utilizzano per lo più a tale fine elaboratori elettronici.\\E$"}
 {"rule":"ER_01_001","sentence":"^\\QA seguito dell'addestramento iniziale, sono possibili ulteriori sessioni di addestramento: scenari.: sequenze di Batch, Unsupervised Tuning; rischio.:\\E$"}
+{"rule":"ST_03_001","sentence":"^\\Qnon decresce (o oscilla significativamente) il sistema non converge: il metodo di ottimizzazione non è efficace, gli iperparamentri sono fu\\E$"}

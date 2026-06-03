@@ -1,0 +1,2 @@
+{"rule":"WHITESPACE_RULE","sentence":"^\\Q^-1\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QOx Oy g#1, #2\\E$"}
