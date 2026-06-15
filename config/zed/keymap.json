@@ -1,0 +1,119 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "bindings": {
+      "space p f": "file_finder::Toggle",
+      "space p s": "pane::DeploySearch",
+      "space r t": "task::Spawn",
+      "space l r": "editor::RestartLanguageServer",
+      "space f": "editor::Format",
+      "space c c": "editor::ToggleComments",
+    },
+  },
+  {
+    "context": "(Editor && vim_mode == normal) || Dock",
+    "bindings": {
+      "ctrl-e": "workspace::ToggleRightDock",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+    },
+  },
+  {
+    "context": "Welcome",
+    "unbind": {
+      "ctrl-n": "workspace::NewFile",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-n": "workspace::NewFile",
+    },
+  },
+  {
+    "context": "ProjectPanel",
+    "unbind": {
+      "ctrl-n": "project_panel::NewFile",
+    },
+  },
+  {
+    "context": "Editor && mode == full",
+    "unbind": {
+      "ctrl-h": "buffer_search::DeployReplace",
+    },
+  },
+  {
+    "context": "FileFinder || FileFinder > Picker > Editor || FileFinder > Picker > menu",
+    "unbind": {
+      "ctrl-h": "pane::SplitLeft",
+    },
+  },
+  {
+    "context": "BufferSearchBar",
+    "unbind": {
+      "ctrl-h": "search::ToggleReplace",
+    },
+  },
+  {
+    "context": "Picker > Editor",
+    "unbind": {
+      "ctrl-h": "editor::Backspace",
+    },
+  },
+  {
+    "context": "vim_mode == literal",
+    "unbind": {
+      "ctrl-h": ["vim::Literal", ["ctrl-h", "\b"]],
+    },
+  },
+  {
+    "context": "FileFinder || FileFinder > Picker > Editor || FileFinder > Picker > menu",
+    "unbind": {
+      "ctrl-h": "pane::SplitLeft",
+    },
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-l": "editor::SelectLine",
+    },
+  },
+  {
+    "context": "BufferSearchBar",
+    "unbind": {
+      "ctrl-l": "search::ToggleSelection",
+    },
+  },
+  {
+    "context": "vim_mode == literal",
+    "unbind": {
+      "ctrl-l": ["vim::Literal", ["ctrl-l", "\f"]],
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-e": "file_finder::Toggle",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-p": "file_finder::Toggle",
+    },
+  },
+  {
+    "context": "FileFinder || FileFinder > Picker > Editor",
+    "unbind": {
+      "ctrl-p": "file_finder::Toggle",
+    },
+  },
+]

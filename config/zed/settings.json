@@ -1,0 +1,81 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "buffer_line_height": {
+    "custom": 1.2999999523162842
+  },
+  "ui_font_weight": 400.0,
+  "completion_menu_item_kind": "symbol",
+  "indent_guides": {
+    "background_coloring": "disabled",
+  },
+  "toolbar": {
+    "selections_menu": true,
+    "quick_actions": false,
+    "breadcrumbs": false,
+    "code_actions": true,
+    "agent_review": false,
+  },
+  "scrollbar": {
+    "axes": {
+      "horizontal": true,
+      "vertical": true,
+    },
+    "show": "auto",
+  },
+  "auto_signature_help": true,
+  "code_lens": "off",
+  "lsp_document_colors": "inlay",
+  "colorize_brackets": true,
+  "vim": {
+    "toggle_relative_line_numbers": true,
+  },
+  "proxy": "",
+  "disable_ai": true,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": true,
+    "anthropic_retention": false,
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "vim_mode": true,
+  "base_keymap": "VSCode",
+  "relative_line_numbers": "enabled",
+  "sticky_scroll": {
+    "enabled": false,
+  },
+  "gutter": {
+    "line_numbers": true,
+  },
+  "minimap": {
+    "thumb": "hover",
+    "show": "never",
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "VSCode Icons for Zed (Dark)",
+  },
+  "ui_font_size": 14.0,
+  "buffer_font_size": 13.0,
+  "theme": {
+    "mode": "dark",
+    "light": "Gruvbox Light",
+    "dark": "One Dark",
+  },
+  "lsp": {
+    "qml": {
+      "binary": {
+        "arguments": ["-E"],
+      },
+    },
+  },
+}
