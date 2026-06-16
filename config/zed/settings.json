@@ -7,9 +7,6 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "buffer_line_height": {
-    "custom": 1.2999999523162842
-  },
   "ui_font_weight": 400.0,
   "completion_menu_item_kind": "symbol",
   "indent_guides": {
@@ -60,12 +57,10 @@
     "show": "never",
   },
   "icon_theme": {
-    "mode": "dark",
-    "light": "Zed (Default)",
+    "mode": "light",
+    "light": "VSCode Icons for Zed (Dark)",
     "dark": "VSCode Icons for Zed (Dark)",
   },
-  "ui_font_size": 14.0,
-  "buffer_font_size": 13.0,
   "theme": {
     "mode": "dark",
     "light": "Gruvbox Light",

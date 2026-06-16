@@ -8,6 +8,33 @@
 [
   {
     "bindings": {
+      "ctrl-e": "workspace::ToggleRightDock",
+    },
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      // "space p f": [
+      //   "task::Spawn",
+      //   {
+      //     "task_name": "Television File Finder",
+      //     "reveal_target": "center",
+      //   },
+      // ],
+      // "space p s": [
+      //   "task::Spawn",
+      //   {
+      //     "task_name": "Television Text Finder",
+      //     "reveal_target": "center",
+      //   },
+      // ],
+      // "space p g": [
+      //   "task::Spawn",
+      //   {
+      //     "task_name": "Television Git Log",
+      //     "reveal_target": "center",
+      //   },
+      // ],
       "space p f": "file_finder::Toggle",
       "space p s": "pane::DeploySearch",
       "space r t": "task::Spawn",
@@ -24,6 +51,12 @@
       "ctrl-j": "workspace::ActivatePaneDown",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-l": "workspace::ActivatePaneRight",
+    },
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-6": "pane::AlternateFile",
     },
   },
   {
