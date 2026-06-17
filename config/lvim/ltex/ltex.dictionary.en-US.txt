@@ -25,3 +25,8 @@ svm
 KKT
 kkt
 Karush-Kuhn-Tucker
+bgg
+AGGregatING
+OOB
+oob
+svd
