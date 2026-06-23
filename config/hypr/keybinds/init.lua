@@ -33,5 +33,6 @@ hl.bind(vars.mod .. " + SHIFT + x", hl.dsp.exec_cmd("hyprlock"))
 
 require("keybinds.audio")
 require("keybinds.workspaces")
+require("keybinds.quickshell")
 
 -- hl.bind(vars.mod .. " + E", hl.dsp.exec_cmd(vars.fileManager))
