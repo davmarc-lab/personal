@@ -453,3 +453,12 @@ Rumelhart
 Backpropagation
 credit
 assignment
+mlp_forward_propagation
+backpropagation
+hidden-output
+input-hidden
+. ḍ Dummy73 
+ḍḍḍ ḍ Dummy82 Dummy83
+. ḍ Dummy81 
+stochastic
+mini-batch

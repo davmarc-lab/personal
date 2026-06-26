@@ -22,7 +22,7 @@ vim.opt.expandtab = true
 vim.wo.number = true
 vim.opt.relativenumber = true
 -- wrap line on new line when is too long
-vim.wo.wrap = false
+vim.wo.wrap = true
 -- autoindent
 vim.opt.autoindent = true
 
@@ -40,5 +40,7 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 50
 
+require('vim._core.ui2').enable()
 
-
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0

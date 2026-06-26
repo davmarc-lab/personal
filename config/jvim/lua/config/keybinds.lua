@@ -21,6 +21,9 @@ vim.keymap.set("n", "Y", '"+y')
 vim.keymap.set("n", "d", '"_d')
 vim.keymap.set("v", "d", '"_d')
 
+-- search the current word and replace with a new word in the entire file
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
 -- set this file permission to executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
@@ -30,3 +33,6 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 
+-- restart lsp
+vim.keymap.set("n", "<leader>lr", "<cmd>lsp restart<CR>", { silent = true, desc = "Restart LSP" })
+vim.keymap.set("n", "<leader>lh", "<cmd>checkhealth vim.lsp<CR>", { silent = true, desc = "LSP Info" })
