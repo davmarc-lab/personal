@@ -8,3 +8,6 @@ require("config.lazy")
 
 require("config.colorscheme")
 require("config.lsp")
+
+-- require custom extensions/plugins
+require("custom.label-picker")

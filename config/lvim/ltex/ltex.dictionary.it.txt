@@ -462,3 +462,8 @@ input-hidden
 . ḍ Dummy81 
 stochastic
 mini-batch
+iteration
+tool
+large
+sharp
+flat
