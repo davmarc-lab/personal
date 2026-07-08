@@ -48,3 +48,17 @@ UMAP
 lstm
 MultiLayer
 mlp
+Nesterov
+Adagrad
+adagrad
+DNN
+dnn
+fcdnn
+rnn
+gan
+vae
+AutoEncoders
+cnn
+Relu
+relu
+elu
