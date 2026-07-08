@@ -508,3 +508,16 @@ Leaky
 Dropout
 connected
 fully
+Autodiff
+reverse-mode
+autodiff
+Jacobiane
+chain
+pooling
+fully-connected
+mlp
+receptive
+field
+Convoluzione
+image
+convoluzione

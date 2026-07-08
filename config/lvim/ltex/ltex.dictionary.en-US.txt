@@ -62,3 +62,5 @@ cnn
 Relu
 relu
 elu
+gemm
+GEneral
