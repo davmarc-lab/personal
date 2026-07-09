@@ -43,6 +43,7 @@ return {
                     ltex = {
                         enabled = { "markdown", "tex", "latex", "bib", "plaintext", "text" },
                         language = { "en_US", "en", "it" },
+                        checkFrequency = "save"
                     },
                 },
                 on_attach = function(_)
