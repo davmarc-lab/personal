@@ -1,15 +1,20 @@
 local ls_loader = require("luasnip.loaders.from_lua")
+local ls_code = require("luasnip.loaders.from_vscode")
 
 local snippet_dir = ".snippets"
 
 local function load_project_snippets()
+    -- clears luasnip cache
+    ls_loader.clean()
     -- look for snippet folder
     local local_snippet_path = vim.loop.cwd() .. "/" .. snippet_dir
 
     if vim.loop.fs_stat(local_snippet_path) then
-        vim.notify("Found custom snippets folder", vim.log.levels.INFO)
-        ls_loader.load({ paths = local_snippet_path })
-        vim.notify("Loading snippets", vim.log.levels.INFO)
+        ls_code.lazy_load()
+        ls_loader.lazy_load({
+            paths = local_snippet_path,
+        })
+        vim.notify("Custom snippets loaded", vim.log.levels.INFO)
     end
 end
 
@@ -19,8 +24,6 @@ load_project_snippets()
 -- reload when directory changes
 vim.api.nvim_create_autocmd("DirChanged", {
     callback = function()
-        -- clears luasnip cache
-        ls_loader.unload()
         load_project_snippets()
     end,
 })
