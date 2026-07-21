@@ -41,6 +41,5 @@ hl.on("hyprland.start", function()
 
     enable("discord", vars.enable.discord)
     enable("LD_PRELOAD=/usr/lib/spotify-adblock.so spotify")
-
     enable("quickshell", vars.enable.quickshell, { "hyprpaper", vars.bar, vars.notification })
 end)

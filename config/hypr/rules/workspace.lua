@@ -57,7 +57,7 @@ hl.window_rule({
 hl.window_rule({
     name = "rule-music",
     match = {
-        class = "Spotify|spotify",
+        class = "Spotify",
     },
     workspace = "10 silent",
 })
