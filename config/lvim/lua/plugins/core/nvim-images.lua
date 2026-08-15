@@ -12,9 +12,8 @@ return {
         filetypes = {
             tex = {
                 relative_template_path = false,
-                template = [[\includegraphics[width=.8\textwidth]{$FILE_PATH}
-\caption{$CURSOR}
-\label{fig:$LABEL}
+                template = [[    \includegraphics[width=.8$CURSOR\textwidth]{$FILE_PATH}
+    \caption{}\label{fig:$LABEL}
 ]],
                 formats = { "jpeg", "jpg", "png", "pdf" },
             },
