@@ -25,3 +25,4 @@ dolphin
 go
 playerctl
 kolourpaint
+gnome-themes-extra
