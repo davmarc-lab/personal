@@ -96,3 +96,6 @@ daas
 DaaS
 paas
 iaas
+tco
+ito
+bpo

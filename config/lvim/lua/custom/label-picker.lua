@@ -3,11 +3,24 @@ local finders = require("telescope.finders")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local conf = require("telescope.config").values
+local ls = require("luasnip")
 
-local function copy_label_to_clipboard(prompt_bufnr)
+local function copy_label_and_insert(prompt_bufnr)
     local selection = action_state.get_selected_entry()
     actions.close(prompt_bufnr)
     vim.fn.setreg('"', selection.value)
+
+    vim.schedule(function()
+        local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+        local line = vim.api.nvim_buf_get_lines(0, row - 1, row, false)[1] or ""
+
+        -- Move cursor one column right but don't overshoot past the end of the line.
+        if col < #line then
+            vim.api.nvim_win_set_cursor(0, { row, col + 1 })
+        end
+
+        ls.lsp_expand(selection.value)
+    end)
 end
 
 local function telescope_label_search()
@@ -49,8 +62,8 @@ local function telescope_label_search()
             }),
             sorter = conf.generic_sorter({}),
             attach_mappings = function(_, map)
-                map("i", "<CR>", copy_label_to_clipboard)
-                map("n", "<CR>", copy_label_to_clipboard)
+                map("i", "<CR>", copy_label_and_insert)
+                map("n", "<CR>", copy_label_and_insert)
                 return true
             end,
         })
