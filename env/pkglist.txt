@@ -26,3 +26,4 @@ go
 playerctl
 kolourpaint
 gnome-themes-extra
+tree
