@@ -1,2 +1,2 @@
-require("custom.label-picker")
+require("custom.hyperref-picker")
 require("custom.projects-snippets")

@@ -11,15 +11,13 @@ local function copy_label_and_insert(prompt_bufnr)
     vim.fn.setreg('"', selection.value)
 
     vim.schedule(function()
-        local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-        local line = vim.api.nvim_buf_get_lines(0, row - 1, row, false)[1] or ""
-
-        -- Move cursor one column right but don't overshoot past the end of the line.
-        if col < #line then
-            vim.api.nvim_win_set_cursor(0, { row, col + 1 })
-        end
-
-        ls.lsp_expand(selection.value)
+        vim.cmd("startinsert!")
+        ls.snip_expand(ls.snippet("", {
+            ls.text_node("\\hyperref[" .. selection.value .. "]{"),
+            ls.insert_node(1, "label_name"),
+            ls.text_node("}"),
+            ls.insert_node(0),
+        }))
     end)
 end
 

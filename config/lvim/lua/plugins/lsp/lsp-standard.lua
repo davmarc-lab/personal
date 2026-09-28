@@ -43,7 +43,12 @@ return {
                     ltex = {
                         enabled = { "markdown", "tex", "latex", "bib", "plaintext", "text" },
                         language = { "en_US", "en", "it" },
-                        checkFrequency = "save"
+                        checkFrequency = "save",
+                        latex = {
+                            environments = {
+                                codeblock = "ignore",
+                            },
+                        },
                     },
                 },
                 on_attach = function(_)
