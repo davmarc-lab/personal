@@ -1001,3 +1001,10 @@ Petri
 algoritmicamente
 singoletto
 epsilon-chiusura
+grep
+Kleene
+annichilatore
+idempotente
+autociclo
+predecessori-successori
+riempi-tabella

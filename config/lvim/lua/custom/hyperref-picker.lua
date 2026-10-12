@@ -10,8 +10,16 @@ local function copy_label_and_insert(prompt_bufnr)
     actions.close(prompt_bufnr)
     vim.fn.setreg('"', selection.value)
 
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    local line = vim.api.nvim_get_current_line()
+
+    -- Only shift right if not already past the end of the line
+    if col < #line then
+        vim.api.nvim_win_set_cursor(0, { row, col + 1 })
+    end
+
     vim.schedule(function()
-        vim.cmd("startinsert!")
+        vim.cmd("normal! a")
         ls.snip_expand(ls.snippet("", {
             ls.text_node("\\hyperref[" .. selection.value .. "]{"),
             ls.insert_node(1, "label_name"),
