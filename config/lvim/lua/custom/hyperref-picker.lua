@@ -8,21 +8,20 @@ local ls = require("luasnip")
 local function copy_label_and_insert(prompt_bufnr)
     local selection = action_state.get_selected_entry()
     actions.close(prompt_bufnr)
-    vim.fn.setreg('"', selection.value)
+    vim.fn.setreg('"', selection.key)
 
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
     local line = vim.api.nvim_get_current_line()
 
-    -- Only shift right if not already past the end of the line
+    -- shift right if not already past the end of the line
     if col < #line then
         vim.api.nvim_win_set_cursor(0, { row, col + 1 })
     end
 
     vim.schedule(function()
-        vim.cmd("normal! a")
         ls.snip_expand(ls.snippet("", {
-            ls.text_node("\\hyperref[" .. selection.value .. "]{"),
-            ls.insert_node(1, "label_name"),
+            ls.text_node("\\hyperref[" .. selection.key .. "]{"),
+            ls.insert_node(1, selection.value),
             ls.text_node("}"),
             ls.insert_node(0),
         }))
@@ -46,7 +45,8 @@ local function telescope_label_search()
         if key and text then
             local display_text = (string.match(text, "\\relax") == nil) and text or ""
             table.insert(labels, {
-                value = key,
+                key = key,
+                value = display_text,
                 display = key .. (display_text ~= "" and (" -> " .. display_text) or ""),
                 ordinal = key .. (display_text ~= "" and (" " .. display_text) or ""),
             })
@@ -60,6 +60,7 @@ local function telescope_label_search()
                 results = labels,
                 entry_maker = function(entry)
                     return {
+                        key = entry.key,
                         value = entry.value,
                         display = entry.display,
                         ordinal = entry.ordinal,
@@ -76,5 +77,4 @@ local function telescope_label_search()
         :find()
 end
 
--- Map this to a key, e.g., <leader>ll
 vim.keymap.set("n", "<leader>ll", telescope_label_search, { desc = "Search and copy LaTeX labels" })
