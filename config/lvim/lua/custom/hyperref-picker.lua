@@ -10,25 +10,13 @@ local function copy_label_and_insert(prompt_bufnr)
     actions.close(prompt_bufnr)
     vim.fn.setreg('"', selection.key)
 
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-    local line = vim.api.nvim_get_current_line()
-
-    -- if dummy stays true the cursor is at the ond of the line
-    local dummy = true
-    -- shift right if not already past the end of the line
-    if col < #line then
-        vim.api.nvim_win_set_cursor(0, { row, col + 1 })
-        dummy = false
-    end
-
     vim.schedule(function()
-        ls.snip_expand(ls.snippet("", {
-            -- if cursor at the end of the line add a space
-            ls.text_node((dummy and " \\hyperref[" or "\\hyperref[") .. selection.key .. "]{"),
-            ls.insert_node(1, selection.value),
-            ls.text_node("}"),
-            ls.insert_node(0),
-        }))
+        vim.api.nvim_put(
+            { "\\hyperref[" .. selection.key .. "]{" .. selection.value .. "}" },
+            "c",
+            true,
+            true
+        )
     end)
 end
 

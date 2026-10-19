@@ -45,6 +45,9 @@ return {
                         language = { "en_US", "en", "it" },
                         checkFrequency = "save",
                         latex = {
+                            commands = {
+                                ["\\texttt{}"] = "ignore",
+                            },
                             environments = {
                                 codeblock = "ignore",
                             },

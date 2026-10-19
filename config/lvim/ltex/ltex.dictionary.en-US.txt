@@ -163,3 +163,7 @@ speedup
 Amdahl
 livelock
 livelock
+bnf
+cfg
+cfl
+Backus-Naur-Form

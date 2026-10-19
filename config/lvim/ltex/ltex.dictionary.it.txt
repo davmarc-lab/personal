@@ -1008,3 +1008,4 @@ idempotente
 autociclo
 predecessori-successori
 riempi-tabella
+sottoalberi
