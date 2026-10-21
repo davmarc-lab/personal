@@ -64,17 +64,19 @@ else
     done
 fi
 
-echo -e "\nCopying rc files"
+if [[ $# < 1 ]] then
+    echo -e "\nCopying rc files"
 
-FILES=`find config -maxdepth 1 -type f -name "*rc"`
-for file in $FILES
-do
-    file="${file##*/}"
-    read -r -p "-- install '$file'? [Y/n] " response
-    if [[ $response =~ ^(y| ) ]] || [[ -z $response ]] then
-        cp config/$file $DST/$file
-        echo "-- copied $file --"
-    fi
-done
+    FILES=`find config -maxdepth 1 -type f -name "*rc"`
+    for file in $FILES
+    do
+        file="${file##*/}"
+        read -r -p "-- install '$file'? [Y/n] " response
+        if [[ $response =~ ^(y| ) ]] || [[ -z $response ]] then
+            cp config/$file $DST/$file
+            echo "-- copied $file --"
+        fi
+    done
 
-echo -e "\nFinished copying configs\n"
+    echo -e "\nFinished copying configs\n"
+fi
