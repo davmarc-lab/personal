@@ -25,8 +25,10 @@ local vars = {
         },
     },
     enable = {
+        spotify = true,
         quickshell = true,
-        discord = false,
+        telegram = true,
+        discord = true,
     },
 }
 

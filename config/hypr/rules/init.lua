@@ -31,12 +31,6 @@ hl.window_rule({
 -- })
 -- overlayLayerRule:set_enabled(false)
 
-hl.window_rule({
-    name = "move-hyprland-run",
-    match = { class = "hyprland-run" },
-
-    move = "20 monitor_h-120",
-    float = true,
-})
-
-require("rules.workspace")
+require("rules.layout")
+require("rules.window")
+require("rules.quickshell")

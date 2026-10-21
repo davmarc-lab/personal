@@ -10,7 +10,8 @@ hl.bind(
 )
 
 hl.bind(vars.mod .. " + v", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(vars.mod .. " + d", hl.dsp.exec_cmd(vars.menu))
+-- replaced by `quickshell.lua`
+-- hl.bind(vars.mod .. " + d", hl.dsp.exec_cmd(vars.menu))
 hl.bind(vars.mod .. " + p", hl.dsp.window.pseudo())
 hl.bind(vars.mod .. " + e", hl.dsp.layout("togglesplit")) -- dwindle only
 

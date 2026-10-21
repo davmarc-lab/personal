@@ -1,14 +1,14 @@
 alacritty
 btop
-cvim
 dunst
 htop
 hypr
 kitty
 nvim
-nvim-old
+cvim
+lvim
+jvim
 ohmyposh
 waybar
 tmux
 vim
-quickshell

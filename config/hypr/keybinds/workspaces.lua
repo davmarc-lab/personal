@@ -15,3 +15,6 @@ hl.bind(vars.mod .. " + SHIFT + s", hl.dsp.window.move({ workspace = "special:ma
 -- Move/resize windows with vars.mod + LMB/RMB and dragging
 hl.bind(vars.mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(vars.mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+hl.bind(vars.mod .. " + SHIFT + h", hl.dsp.layout("move -col"))
+hl.bind(vars.mod .. " + SHIFT + l", hl.dsp.layout("move +col"))

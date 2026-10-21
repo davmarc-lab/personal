@@ -11,7 +11,7 @@ hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 
 -- Dark theme on Qt apps
-hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+-- hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 
 -- Dark theme on GTK apps

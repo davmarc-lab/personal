@@ -1,6 +1,7 @@
 local vars = require("vars")
 
 if vars.enable.quickshell then
+    hl.bind(vars.mod .. " + d", hl.dsp.exec_cmd("quickshell ipc call launcher toggle"))
     hl.bind(vars.mod .. " + u", hl.dsp.exec_cmd("quickshell ipc call utility toggle"))
     hl.bind(vars.mod .. " + w", hl.dsp.exec_cmd("quickshell ipc call dock toggle"))
     hl.bind(vars.mod .. " + n", hl.dsp.exec_cmd("quickshell ipc call side toggle"))

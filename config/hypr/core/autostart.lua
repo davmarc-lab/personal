@@ -37,9 +37,11 @@ end
 -- See https://wiki.hypr.land/Configuring/Basics/Autostart/
 hl.on("hyprland.start", function()
     hl.exec_cmd(vars.terminal)
-    hl.exec_cmd("nm-applet")
+    -- hl.exec_cmd("nm-applet")
 
+    enable("Telegram", vars.enable.telegram)
     enable("discord", vars.enable.discord)
-    enable("LD_PRELOAD=/usr/lib/spotify-adblock.so spotify")
+
+    enable("LD_PRELOAD=/usr/lib/spotify-adblock.so spotify", vars.enable.spotify)
     enable("quickshell", vars.enable.quickshell, { "hyprpaper", vars.bar, vars.notification })
 end)
