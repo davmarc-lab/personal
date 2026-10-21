@@ -16,6 +16,41 @@ if [[ ! -e $DST ]] then
     mkdir $DST
 fi
 
+function install () {
+    if [[ $# -eq 1 ]] then
+        elem=$1
+        echo "Installing '$elem' in $DST/$elem"
+        rm -rf $DST/$elem
+        echo "-- old config in '$DST/$elem' removed --"
+        cp -r config/$elem $DST/$elem
+        echo -e "-- new config copied in '$DST/$elem'\n"
+    fi
+}
+
+
+# If a file is passed it checks if it exists and start querying the given configs.
+# If the file doesn't exists it recalls itself without parameters and fallback to `all`.
+if [[ $1 == "modules.txt" ]] then
+    res=`find $1 2> /dev/null`
+    if [[ $? -eq 0 ]] then
+        for config in `cat modules.txt`
+        do
+            read -r -p "-- install '$config'? [Y/n] " response
+            response=${response,,}
+            if [[ $response =~ ^(y| ) ]] || [[ -z $response ]]; then
+                install "$config"
+            fi
+        done
+        echo -e "\nFinished copying configs\n"
+
+        exit 0
+    fi
+    # file given not found
+    err "$1 was not found -- falling back to \`all\`"
+    ./config-install.sh
+    exit $?
+fi
+
 if [[ $# < 1 ]] then
     echo "-- listing all config modules"
     MODULES=`ls -A -d -1 config/*`
@@ -31,11 +66,7 @@ if [[ $# < 1 ]] then
         for mod in $MODULES
         do
             elem=`sed "s/.*\///" <<< $mod`
-            echo "Installing '$elem' in $DST/$elem"
-            rm -rf $DST/$elem
-            echo "-- old config in '$DST/$elem' removed --"
-            cp -r config/$elem $DST/$elem
-            echo -e "-- new config copied in '$DST/$elem'\n"
+            install "$elem"
         done
     else
         echo "-- config not imported -- user skip"
@@ -53,11 +84,7 @@ else
                 read -r -p "-- install '$found'? [Y/n] " response
                 response=${response,,}
                 if [[ $response =~ ^(y| ) ]] || [[ -z $response ]]; then
-                    echo -e "\nInstalling '$found' in $DST/$found"
-                    rm -rf $DST/$found
-                    echo "-- old config in '$DST/$found' removed --"
-                    cp -r config/$found $DST/$found
-                    echo -e "-- new config copied in '$DST/$found'\n"
+                    install "$found"
                 fi
             done
         fi
@@ -77,6 +104,6 @@ if [[ $# < 1 ]] then
             echo "-- copied $file --"
         fi
     done
-
-    echo -e "\nFinished copying configs\n"
 fi
+
+echo -e "\nFinished copying configs\n"
