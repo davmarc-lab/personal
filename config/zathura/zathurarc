@@ -1,0 +1,4 @@
+set selection-clipboard clipboard
+
+# fix horizontal scroll bug
+set guioptions "sh"

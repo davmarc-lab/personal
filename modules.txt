@@ -11,4 +11,5 @@ jvim
 ohmyposh
 waybar
 tmux
+zathura
 vim
