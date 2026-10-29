@@ -33,6 +33,16 @@ return {
                 automatic_enable = true,
             })
 
+            vim.lsp.config("texlab", {
+                settings = {
+                    texlab = {
+                        experimental = {
+                            mathEnvironments = { "ceq" },
+                        },
+                    },
+                },
+            })
+
             vim.lsp.config("ltex_plus", {
                 filetypes = {
                     "tex",
@@ -50,6 +60,7 @@ return {
                             },
                             environments = {
                                 codeblock = "ignore",
+                                ceq = "ignore",
                             },
                         },
                     },

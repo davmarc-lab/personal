@@ -167,3 +167,13 @@ bnf
 cfg
 cfl
 Backus-Naur-Form
+mutex-es
+Pthreads
+Reentrancy
+sequentializations
+PROMELA
+Mutex
+mutex
+Patil
+subprocesses
+subprocess

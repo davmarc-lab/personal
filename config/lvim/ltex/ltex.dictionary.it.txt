@@ -1009,3 +1009,8 @@ autociclo
 predecessori-successori
 riempi-tabella
 sottoalberi
+stack
+tupla
+Stack
+Chomsky
+Chomsky
