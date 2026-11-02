@@ -1014,3 +1014,8 @@ tupla
 Stack
 Chomsky
 Chomsky
+Backpointers
+decorrelare
+K-Means
+learn
+scikit

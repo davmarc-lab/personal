@@ -3,6 +3,9 @@ local finders = require("telescope.finders")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local conf = require("telescope.config").values
+-- check if the user started in normal or insert mode
+-- (use opts when calling the shortcut)
+local is_normal_mode = false
 
 local function copy_label_and_insert(prompt_bufnr)
     local selection = action_state.get_selected_entry()
@@ -10,7 +13,7 @@ local function copy_label_and_insert(prompt_bufnr)
     vim.fn.setreg('"', selection.key)
 
     vim.schedule(function()
-        vim.api.nvim_put({ selection.value }, "c", true, true)
+        vim.api.nvim_put({ (is_normal_mode and "" or " ") .. selection.value }, "c", true, true)
     end)
 end
 
@@ -19,8 +22,8 @@ local function make_hyperref(label, link)
 end
 
 local function telescope_label_shortcuts()
+    is_normal_mode = vim.api.nvim_get_mode().mode == "n"
     local shortcuts = dofile(".lvim/hyperref-shortcuts.lua")
-
     local labels = {}
     for label, data in pairs(shortcuts) do
         local link_str = data.cmd or (data.link and make_hyperref(label, data.link))
@@ -61,3 +64,4 @@ local function telescope_label_shortcuts()
 end
 
 vim.keymap.set("n", "<leader>ls", telescope_label_shortcuts, { desc = "Search and copy LaTeX label shortcuts" })
+vim.keymap.set("i", "<C-s>", telescope_label_shortcuts, { desc = "Search and copy LaTeX label shortcuts" })

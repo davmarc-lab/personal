@@ -177,3 +177,8 @@ mutex
 Patil
 subprocesses
 subprocess
+waitC
+signalC
+cond
+minrank
+divide-et-impera
