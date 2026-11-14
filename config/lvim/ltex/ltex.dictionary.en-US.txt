@@ -182,3 +182,4 @@ signalC
 cond
 minrank
 divide-et-impera
+wumpus
